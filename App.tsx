@@ -6,18 +6,21 @@ import TabNavigator from './src/Navigator/TabNavigator';
 import Navigator from './src/Navigator/Navigator';
 import { Provider } from 'react-redux';
 import { store } from './src/Redux/store';
+import MoviesContextProvider from './src/ContextAPI/moviesContext';
 
 
 const App = () => {
   return (
-    <Provider  store={store}>
-    <PaperProvider>
-      <NavigationContainer>
-        <TabNavigator />
-        {/* <Navigator/> */}
-      </NavigationContainer>
-    </PaperProvider>
-    </Provider>
+    <MoviesContextProvider>
+      {/* <Provider store={store}> */}
+        <PaperProvider>
+          <NavigationContainer>
+            <TabNavigator />
+            {/* <Navigator/> */}
+          </NavigationContainer>
+        </PaperProvider>
+      {/* </Provider> */}
+    </MoviesContextProvider>
   )
 }
 

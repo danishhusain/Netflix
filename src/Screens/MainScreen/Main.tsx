@@ -1,16 +1,14 @@
 import { View, Text } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Colors } from '../../CustomComponents/CustomColor'
 import { Button } from 'react-native-paper'
+import { MoviesContext } from '../../ContextAPI/moviesContext'
 
 const Main = () => {
- 
-
+  const { cart, setcart } = useContext(MoviesContext)
   return (
     <View style={{ flex: 1, backgroundColor: Colors.BG }}>
       <Text>MainScreen</Text>
-     
-
 
     </View>
   )
