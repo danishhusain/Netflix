@@ -9,5 +9,6 @@ export const Colors = {
     BG: '#191919',
     CARDCOLOR: '#0080ff',
     appBG: '#564d4d',
+    backgroundColor: 'rgba(52, 52, 52, 0.8)'
 
 }

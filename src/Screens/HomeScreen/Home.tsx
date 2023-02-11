@@ -1,11 +1,11 @@
-import { View, Text, Button, StatusBar, FlatList, TouchableOpacity } from 'react-native'
+import { View, Text, Button, StatusBar, FlatList, TouchableOpacity, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { IconButton } from 'react-native-paper'
 import Main from '../MainScreen/Main'
 import { Colors } from '../../CustomComponents/CustomColor'
 import axios from 'axios'
-import { Image } from 'react-native-paper/lib/typescript/components/Avatar/Avatar'
+// import { Image } from 'react-native-paper/lib/typescript/components/Avatar/Avatar'
 
 const Home = () => {
     const navigation = useNavigation()
@@ -28,15 +28,40 @@ const Home = () => {
                 // always executed
             });
     }
-    // console.log(movies.results[2].overview)
+    // console.log(movies)
+    // renderMovies
     const renderMovies = ({ item }) => {
-        // const img = item.poster_path
+        const posterImg = `http://image.tmdb.org/t/p/w185/${item.poster_path}`
+        const backdropImg = `http://image.tmdb.org/t/p/w185/${item.backdrop_path}`
         return (
-            <View>
-                <TouchableOpacity>
-                    <Image source={{ uri: item.backdrop_path }} />
-                    <Text style={{ backgroundColor: 'blue' }}>{item.title}</Text>
+            <View style={{ borderRadius: 100, marginHorizontal: 4, borderColor: 'blue' }}>
+                <TouchableOpacity style={{ borderRadius: 100, marginHorizontal: 4, borderColor: 'blue' }}>
+                    <Image style={{ height: 120, width: 120, borderRadius: 100 }} source={{ uri: posterImg }} />
+                    {/* <Image style={{height:100,width:100}} source={{uri:backdropImg}} /> */}
+                    <Text style={{ width: 120, backgroundColor: 'grey', }} numberOfLines={1} ellipsizeMode="tail">{item.title}</Text>
                 </TouchableOpacity>
+            </View>
+        )
+    }
+    // continueWatching
+    const continueWatching = ({ item }) => {
+        const posterImg = `http://image.tmdb.org/t/p/w185/${item.poster_path}`
+        const backdropImg = `http://image.tmdb.org/t/p/w185/${item.backdrop_path}`
+        return (
+            <View style={{ marginHorizontal: 4, borderColor: 'blue' }}>
+                <View>
+                {/* <IconButton icon={'information'} iconColor={Colors.WHITE} /> */}
+                    <TouchableOpacity style={{ marginHorizontal: 4, borderColor: 'blue' }}>
+                        <Image style={{ height: 140, width: 120, }} source={{ uri: posterImg }} />
+                        {/* <Image style={{height:100,width:100}} source={{uri:backdropImg}} /> */}
+                        <Text style={{ width: 120, backgroundColor: 'grey', }} numberOfLines={1} ellipsizeMode="tail">{item.title}</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={{ flexDirection: 'row' }}>
+                    <IconButton icon={'information'} iconColor={Colors.WHITE} />
+                    <IconButton icon={'dots-vertical'} iconColor={Colors.WHITE} />
+
+                </View>
             </View>
         )
     }
@@ -101,14 +126,17 @@ const Home = () => {
                 </View>
                 {/* 5 */}
                 <View style={{ backgroundColor: 'red' }}>
-                    {/* <Text>Continue whatching</Text> */}
-                    {/* <Text>{movies.results[2].overview}</Text> */}
+                    <Text>Continue whatching</Text>
+
                 </View>
                 {/* 6 */}
                 <View style={{ backgroundColor: 'black' }}>
-                    {/* <FlatList
-                    data={}
-                    /> */}
+                    <FlatList
+                        data={movies}
+                        renderItem={continueWatching}
+                        keyExtractor={item => item.id}
+                        horizontal={true}
+                    />
                 </View>
 
 
