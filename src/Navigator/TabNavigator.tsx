@@ -8,6 +8,7 @@ import Downloads from '../Screens/DownloadsScreen/Downloads';
 import More from '../Screens/MoreScreen/More';
 import Home from '../Screens/HomeScreen/Home';
 import Main from '../Screens/MainScreen/Main';
+import MovieDetailPage from '../Screens/DownloadsScreen/MovieDetailPage';
 
 
 const TabNavigator = () => {
@@ -30,6 +31,7 @@ const TabNavigator = () => {
       <Tab.Screen name='More' component={Main} options={{
         tabBarIcon: () => (<IconButton icon={"dots-vertical"} size={25} />)
       }} />
+     
 
     </Tab.Navigator>
   )

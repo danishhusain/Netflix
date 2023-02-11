@@ -42,6 +42,7 @@ const Search = () => {
           onChangeText={onChangeSearch}
           value={searchQuery}
           style={{ backgroundColor: Colors.GRAY, margin: 5 }}
+          
         />
       </View>
       <View>

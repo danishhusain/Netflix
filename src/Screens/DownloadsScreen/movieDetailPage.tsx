@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-const movieDetailPage = () => {
+const MovieDetailPage = () => {
     return (
         <View>
             <Text>movieDetailPage</Text>
@@ -9,4 +9,4 @@ const movieDetailPage = () => {
     )
 }
 
-export default movieDetailPage
+export default MovieDetailPage
