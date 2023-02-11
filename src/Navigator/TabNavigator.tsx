@@ -7,6 +7,7 @@ import ComingSoon from '../Screens/ComingSoonScreen/ComingSoon';
 import Downloads from '../Screens/DownloadsScreen/Downloads';
 import More from '../Screens/MoreScreen/More';
 import Home from '../Screens/HomeScreen/Home';
+import Main from '../Screens/MainScreen/Main';
 
 
 const TabNavigator = () => {
@@ -26,7 +27,7 @@ const TabNavigator = () => {
       <Tab.Screen name='Downloads' component={Downloads} options={{
         tabBarIcon: () => (<IconButton icon={"download"} size={25} />)
       }} />
-      <Tab.Screen name='More' component={More} options={{
+      <Tab.Screen name='More' component={Main} options={{
         tabBarIcon: () => (<IconButton icon={"dots-vertical"} size={25} />)
       }} />
 
