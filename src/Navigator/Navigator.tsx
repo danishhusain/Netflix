@@ -9,6 +9,7 @@ import Downloads from '../Screens/DownloadsScreen/Downloads';
 import More from '../Screens/MoreScreen/More';
 import Main from '../Screens/MainScreen/Main';
 import renderMoviesComponents from '../Screens/HomeScreen/renderMoviesComponents';
+import movieDetailPage from '../Screens/DownloadsScreen/movieDetailPage';
 
 
 
@@ -27,6 +28,7 @@ const Navigator = () => {
             <Stack.Screen name='MainScreen' component={Main}  />
             {/* home */}
             <Stack.Screen name='renderMoviesComponents' component={renderMoviesComponents}  />
+            <Stack.Screen name='movieDetailPage' component={movieDetailPage}  />
 
         </Stack.Navigator>
 

@@ -1,11 +1,26 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { Colors } from '../../CustomComponents/CustomColor'
+import { Button, IconButton } from 'react-native-paper'
+import { useNavigation } from '@react-navigation/native'
 
 const Downloads = () => {
+  const navigation = useNavigation()
+  // movieDetail
+  const movieDetail = () => {
+    return
+    // <movi/>
+  }
   return (
-    <View style={{flex:1,backgroundColor:Colors.BG}}>
-      <Text>Downloads</Text>
+    <View style={{ flex: 1, backgroundColor: Colors.BG, justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{ borderRadius: 100, backgroundColor: Colors.GRAY, marginBottom: 10 }}>
+        <IconButton icon={'download'} size={100} />
+      </View>
+      <Text>Movies and TV shows that you {'\n'}         download appear here</Text>
+      <View style={{ top: 200 }}>
+        <Button mode='contained' style={{ backgroundColor: 'white', }} onPress={() => movieDetail()}>Find Somthing to Download</Button>
+        {/* <movieDetailPage /> */}
+      </View>
     </View>
   )
 }
