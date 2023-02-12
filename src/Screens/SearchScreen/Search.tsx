@@ -41,8 +41,8 @@ const Search = () => {
           placeholder="Search for show movie, genre, etc"
           onChangeText={onChangeSearch}
           value={searchQuery}
-          style={{ backgroundColor: Colors.GRAY, margin: 5 }}
-          
+          style={{ backgroundColor: Colors.GRAY, margin: 3, fontSize: 16 }}
+
         />
       </View>
       <View>

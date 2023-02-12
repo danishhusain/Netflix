@@ -11,13 +11,13 @@ const More = () => {
   const Copyied = () => {
     const textToCopy = 'https://www.netflix.com/in/'
     Clipboard.setString(textToCopy);
-   Alert.alert("Copied Tex")
+    Alert.alert("Copied Tex")
   }
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.BG }}>
       {/* 1 */}
-      <View style={{ borderColor: Colors.WHITE, flexDirection: 'row', justifyContent: 'space-around', marginBottom: 30, }}>
+      <View style={{ borderColor: Colors.WHITE, flexDirection: 'row', justifyContent: 'space-around', marginBottom: 30, marginTop: 10, }}>
         {/* 1.1 */}
         <View>
           <Image style={{ height: 60, width: 60, borderRadius: 3 }} source={require('../../Assets/Images/account.png')} />
@@ -48,7 +48,7 @@ const More = () => {
 
       </View>
       {/* 2 */}
-      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: Colors.GRAY, marginHorizontal: 5, marginBottom: 5, marginTop: 20 }}>
+      <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: Colors.GRAY, marginHorizontal: 5, marginBottom: 10, marginTop: 20 }}>
         <TouchableOpacity onPress={() => { }} style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', backgroundColor: Colors.GRAY, marginHorizontal: 5 }}>
           <IconButton icon={'pencil'} iconColor={Colors.WHITE} />
           <Text style={{ color: Colors.WHITE, }}>Manage Profiles</Text>
@@ -56,9 +56,14 @@ const More = () => {
       </View>
       <View>
         <Text style={{ fontSize: 20, fontWeight: '600', color: Colors.WHITE, left: 5 }}>Tell friends about Netflix.</Text>
+        <Card style={{ marginTop: 20,marginHorizontal:5}}>
+          <Card.Content>
+            <Text>Share this link so your friend can join the conversation around all your favrioute Tv shows and movies.</Text>
+          </Card.Content>
+        </Card>
       </View>
       {/* 3*/}
-      <View style={{ margin: 20 }}>
+      <View style={{ marginHorizontal: 5, marginTop: 20 }}>
         <Card style={{ backgroundColor: Colors.BLACK, elevation: 10 }}>
           <Card.Content style={{ justifyContent: 'space-between', flexDirection: 'row', alignItems: 'center' }}>
             <Text style={{ color: Colors.WHITE, }} selectable>https://www.netflix.com/in/</Text>
@@ -68,7 +73,7 @@ const More = () => {
         </Card>
       </View>
       {/* 4 */}
-      <View style={{ flexDirection: 'row', marginTop: 20, justifyContent: 'space-around', backgroundColor: Colors.BLACK, padding: 15, marginHorizontal: 10 }}>
+      <View style={{ flexDirection: 'row', marginTop: 20, justifyContent: 'space-around', backgroundColor: Colors.BLACK, padding: 15, marginHorizontal: 5, }}>
         <TouchableOpacity>
           <Image source={require('../../Assets/Images/whatsapp.png')} style={{ height: 25, width: 25 }} />
         </TouchableOpacity>
@@ -88,7 +93,7 @@ const More = () => {
 
       </View>
       {/* 5 */}
-      <View style={{ marginTop: 20, flex: 1 }}>
+      <View style={{ top:20 }}>
 
         <TouchableOpacity style={{ margin: 5, backgroundColor: Colors.GRAY, }}>
           <Text style={{ color: Colors.WHITE, padding: 10 }}>App Setting</Text>

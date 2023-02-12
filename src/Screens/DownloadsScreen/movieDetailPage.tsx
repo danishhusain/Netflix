@@ -12,7 +12,6 @@ const MovieDetailPage = () => {
         return (
             <View style={{ marginHorizontal: 4, borderColor: 'blue' }}>
                 <View>
-                    {/* <IconButton icon={'information'} iconColor={Colors.WHITE} /> */}
                     <TouchableOpacity style={{ marginHorizontal: 4, borderColor: 'blue' }}>
                         <Image style={{ height: 140, width: 120, }} source={{ uri: posterImg }} />
                         {/* <Image style={{height:100,width:100}} source={{uri:backdropImg}} /> */}
@@ -27,9 +26,10 @@ const MovieDetailPage = () => {
         <View>
             <ScrollView>
                 {/* 1 */}
+
                 <View>
                     <View>
-                        <Image source={require('../../Assets/Images/main.jpg')} style={{ width: '100%', }} />
+                        <Image source={require('../../Assets/Images/main.jpg')} style={{ width: '100%', borderBottomLeftRadius: 5, borderBottomRightRadius: 5 }} />
                     </View>
                     {/* 2 */}
                     <View style={{ flexDirection: 'row', justifyContent: 'space-around' }} >
@@ -49,28 +49,27 @@ const MovieDetailPage = () => {
                     </View>
 
                 </View>
-
                 {/* 3 */}
                 <View >
                     {/* 3.1 */}
                     <View style={{ backgroundColor: Colors.BLACK, margin: 5 }}>
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                            <Button icon={'play'} />
+                            <IconButton icon={'play'} />
                             <Text style={{ alignSelf: 'center' }}>Play</Text>
                         </TouchableOpacity>
                     </View>
                     {/* 3.2 */}
                     <View style={{ backgroundColor: Colors.GRAY, margin: 5 }}>
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                            <Button icon={'download'} />
+                            <IconButton icon={'download'} />
                             <Text style={{ alignSelf: 'center' }}>Download</Text>
                         </TouchableOpacity>
                     </View>
 
                 </View>
                 {/* 4 */}
-                <View style={{ margin: 5 }}>
-                    <Text>{movies[1].overview}</Text>
+                <View style={{ margin: 5, height: 120, width: '100%' }}>
+                    <Text>{movies[8].overview}</Text>
                 </View>
                 {/* 5 */}
                 <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
@@ -90,7 +89,7 @@ const MovieDetailPage = () => {
                         <Text style={{ alignSelf: 'center', bottom: 5 }}>Share</Text>
                     </View>
                 </View>
-                <View style={{ paddingLeft: 5 }}>
+                <View style={{ paddingLeft: 5, }}>
                     <Text style={{ fontSize: 18 }}>More Like This</Text>
                 </View>
                 {/* 6 */}
