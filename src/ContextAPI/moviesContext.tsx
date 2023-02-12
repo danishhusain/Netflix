@@ -12,7 +12,7 @@ export default function MoviesContextProvider({ children }) {
     axios.get('https://api.themoviedb.org/3/movie/upcoming?api_key=03e185082f315843666a90034a86b9ff', {
     })
       .then(function (response) {
-        // console.log(response.data.results[1].overview);
+        // console.log(response.data.results[2].overview);
         setMovies(response.data.results)
       })
       .catch(function (error) {

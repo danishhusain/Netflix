@@ -15,8 +15,8 @@ const App = () => {
       {/* <Provider store={store}> */}
         <PaperProvider>
           <NavigationContainer>
-            <TabNavigator />
-            {/* <Navigator/> */}
+            {/* <TabNavigator /> */}
+            <Navigator/>
           </NavigationContainer>
         </PaperProvider>
       {/* </Provider> */}

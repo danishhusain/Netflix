@@ -42,7 +42,7 @@ const Home = () => {
                         <Text style={{ width: 120, }} numberOfLines={1} ellipsizeMode="tail">{item.title}</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between',backgroundColor:Colors.backgroundColor,marginHorizontal: 4,  }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: Colors.backgroundColor, marginHorizontal: 4, }}>
                     <IconButton icon={'information'} iconColor={Colors.WHITE} />
                     <IconButton icon={'dots-vertical'} iconColor={Colors.WHITE} />
 
@@ -64,7 +64,7 @@ const Home = () => {
                         <Text style={{ width: 120, }} numberOfLines={1} ellipsizeMode="tail">{item.title}</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between',backgroundColor:Colors.backgroundColor,marginHorizontal: 4,  }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: Colors.backgroundColor, marginHorizontal: 4, }}>
                     <IconButton icon={'information'} iconColor={Colors.WHITE} />
                     <IconButton icon={'dots-vertical'} iconColor={Colors.WHITE} />
 
@@ -86,8 +86,8 @@ const Home = () => {
                         </View>
 
                         {/* 1 */}
-                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center',marginHorizontal: 4,  }}>
-                            <TouchableOpacity style={{ height: 30, width: 30, right: 5, borderRadius: 5 }} onPress={() => navigation.navigate()}>
+                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', marginHorizontal: 4, }}>
+                            <TouchableOpacity style={{ height: 30, width: 30, right: 5, borderRadius: 5 }} onPress={() => navigation.navigate(Profile)}>
                                 <Image style={{ height: 30, width: 30, right: 5, borderRadius: 5 }} source={require('../../Assets/Images/account.png')} />
                             </TouchableOpacity>
                         </View>

@@ -29,7 +29,7 @@ const TabNavigator = () => {
         tabBarIcon: () => (<IconButton icon={"download"} size={25} />)
       }} />
       <Tab.Screen name='More' component={Main} options={{
-        tabBarIcon: () => (<IconButton icon={"dots-vertical"} size={25} />)
+        tabBarIcon: () => (<IconButton icon={"format-list-bulleted"} size={25} />)
       }} />
      
 
