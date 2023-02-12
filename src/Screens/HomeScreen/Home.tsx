@@ -61,7 +61,7 @@ const Home = () => {
                     <TouchableOpacity style={{ marginHorizontal: 4, borderColor: 'blue' }}>
                         <Image style={{ height: 140, width: 120, }} source={{ uri: posterImg }} />
                         {/* <Image style={{height:100,width:100}} source={{uri:backdropImg}} /> */}
-                        <Text style={{ width: 120, color: Colors.WHITE, fontWeight: '400' }} numberOfLines={1} ellipsizeMode="tail">{item.title}</Text>
+                        <Text style={{ width: 120, color: Colors.WHITE, fontWeight: '400', }} numberOfLines={1} ellipsizeMode="tail">{item.title}</Text>
                     </TouchableOpacity>
                 </View>
             </View>
