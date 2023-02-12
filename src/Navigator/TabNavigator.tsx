@@ -22,13 +22,13 @@ const TabNavigator = () => {
       <Tab.Screen name='Search' component={Search} options={{
         tabBarIcon: () => (<IconButton icon={"magnify"} size={25} />)
       }} />
-      <Tab.Screen name='ComingSoon' component={ComingSoon} options={{
+      {/* <Tab.Screen name='ComingSoon' component={ComingSoon} options={{
         tabBarIcon: () => (<IconButton icon={"play-box-multiple"} size={25} />)
-      }} />
+      }} /> */}
       <Tab.Screen name='Downloads' component={Downloads} options={{
         tabBarIcon: () => (<IconButton icon={"download"} size={25} />)
       }} />
-      <Tab.Screen name='More' component={Main} options={{
+      <Tab.Screen name='More' component={More} options={{
         tabBarIcon: () => (<IconButton icon={"format-list-bulleted"} size={25} />)
       }} />
      
