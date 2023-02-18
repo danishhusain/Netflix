@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Searchbar } from 'react-native-paper';
+import { Card, Searchbar } from 'react-native-paper';
 import { Colors } from '../../CustomComponents/CustomColor'
 import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native'
 import { MoviesContext } from '../../ContextAPI/moviesContext';
+import { CurrentRenderContext } from '@react-navigation/native';
 
 
 const Search = () => {
@@ -16,20 +17,21 @@ const Search = () => {
 
     return (
       <>
+          <Card  style={{ flexDirection: 'row', marginVertical: 2 }} >
         <TouchableOpacity style={{ flexDirection: 'row' }}>
+            <View style={{ flexDirection: 'row', marginVertical: 2 }}>
+              <View style={{ flexDirection: 'row' }}>
+                {/* <Text style={{ fontSize: 20, }}>Poupular Searches</Text> */}
+                {/* <Image style={{ height: 80, width: 120, }} source={{ uri: posterImg }} /> */}
+                <Image style={{ height: 80, width: 120, }} source={{ uri: backdropImg }} />
+              </View>
 
-          <View style={{ flexDirection: 'row', marginVertical: 2 }}>
-            <View style={{ flexDirection: 'row' }}>
-              {/* <Text style={{ fontSize: 20, }}>Poupular Searches</Text> */}
-              {/* <Image style={{ height: 80, width: 120, }} source={{ uri: posterImg }} /> */}
-              <Image style={{ height: 80, width: 120, }} source={{ uri: backdropImg }} />
+              <View style={{ left: 5, justifyContent: 'center' }}>
+                <Text style={{}} numberOfLines={1} ellipsizeMode="tail">{item.title}</Text>
+              </View>
             </View>
-
-            <View style={{ left: 5, justifyContent: 'center' }}>
-              <Text style={{}} numberOfLines={1} ellipsizeMode="tail">{item.title}</Text>
-            </View>
-          </View>
         </TouchableOpacity>
+          </Card>
 
       </>
     )
@@ -53,7 +55,8 @@ const Search = () => {
           data={movies}
           renderItem={renderSearches}
           keyExtractor={item => item.id}
-        />
+          showsVerticalScrollIndicator={false}
+          />
       </View>
     </View>
   );

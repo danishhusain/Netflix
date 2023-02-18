@@ -9,6 +9,8 @@ import { MoviesContext } from '../../ContextAPI/moviesContext'
 import Profile from '../ProfileScreen/Profile'
 import Downloads from '../DownloadsScreen/Downloads'
 import MovieDetailPage from '../DownloadsScreen/MovieDetailPage'
+import Info from './Info'
+import Play from '../PlayScreen/Play'
 
 const Home = () => {
     const navigation = useNavigation()
@@ -116,14 +118,14 @@ const Home = () => {
                             </View>
                             {/* 2.3.2 */}
                             <View style={{ backgroundColor: Colors.backgroundColor, flexDirection: 'row', borderRadius: 5 }}>
-                                <TouchableOpacity style={{ flexDirection: 'row', right: 5 }}>
+                                <TouchableOpacity style={{ flexDirection: 'row', right: 5 }} onPress={()=>navigation.navigate(Play)}>
                                     <IconButton icon={'play'} size={25} iconColor={Colors.BLACK} />
                                     <Text style={{ alignSelf: 'center', right: 10, color: Colors.WHITE, fontWeight: '400' }}>Play</Text>
                                 </TouchableOpacity>
                             </View>
                             {/* 2.3.3 */}
                             <View>
-                                <IconButton icon={'information'} size={25} iconColor={Colors.WHITE} />
+                                <IconButton icon={'information'} size={25} iconColor={Colors.WHITE} onPress={()=>navigation.navigate(Info)}/>
                                 <Text style={{ alignSelf: 'center', bottom: 15, color: Colors.WHITE, fontWeight: '400' }}>Info</Text>
                             </View>
                         </View>

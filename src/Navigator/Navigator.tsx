@@ -12,6 +12,8 @@ import TabNavigator from './TabNavigator';
 import Profile from '../Screens/ProfileScreen/Profile';
 import RenderMoviesComponents from '../Screens/HomeScreen/RenderMoviesComponents';
 import MovieDetailPage from '../Screens/DownloadsScreen/MovieDetailPage';
+import Info from '../Screens/HomeScreen/Info';
+import Play from '../Screens/PlayScreen/Play';
 
 
 
@@ -35,6 +37,8 @@ const Navigator = () => {
             <Stack.Screen name='RenderMoviesComponents' component={RenderMoviesComponents} />
             <Stack.Screen name='Profile' component={Profile} />
             <Stack.Screen name='MovieDetailPage' component={MovieDetailPage} />
+            <Stack.Screen name='Info' component={Info} />
+            <Stack.Screen name='Play' component={Play} />
 
        
 
