@@ -14,6 +14,7 @@ import RenderMoviesComponents from '../Screens/HomeScreen/RenderMoviesComponents
 import MovieDetailPage from '../Screens/DownloadsScreen/MovieDetailPage';
 import Info from '../Screens/HomeScreen/Info';
 import Play from '../Screens/PlayScreen/Play';
+import Loader from '../Loader/Loader';
 
 
 
@@ -39,6 +40,7 @@ const Navigator = () => {
             <Stack.Screen name='MovieDetailPage' component={MovieDetailPage} />
             <Stack.Screen name='Info' component={Info} />
             <Stack.Screen name='Play' component={Play} />
+            <Stack.Screen name='Loader' component={Loader} />
 
        
 

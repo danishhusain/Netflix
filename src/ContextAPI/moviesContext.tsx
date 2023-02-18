@@ -5,7 +5,9 @@ import { createContext } from 'react'
 export const MoviesContext = createContext()
 export default function MoviesContextProvider({ children }) {
   const [movies, setMovies] = useState()
+  const [showLoader, setshowLoader] = useState(false)
   useEffect(() => {
+    setshowLoader(true)
     fetchMovies()
   }, [])
   const fetchMovies = async () => {
@@ -14,6 +16,7 @@ export default function MoviesContextProvider({ children }) {
       .then(function (response) {
         // console.log(response.data.results[2].overview);
         setMovies(response.data.results)
+        setshowLoader(false)
       })
       .catch(function (error) {
         console.log(error);
@@ -21,10 +24,13 @@ export default function MoviesContextProvider({ children }) {
       .then(function () {
         // always executed
       });
+      // setshowLoader(false)
+
   }
   return (
     <MoviesContext.Provider value={{
-      movies, setMovies
+      movies, setMovies,
+      showLoader, setshowLoader
 
     }}>
       {children}

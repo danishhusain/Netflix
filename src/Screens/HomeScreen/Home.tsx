@@ -11,10 +11,14 @@ import Downloads from '../DownloadsScreen/Downloads'
 import MovieDetailPage from '../DownloadsScreen/MovieDetailPage'
 import Info from './Info'
 import Play from '../PlayScreen/Play'
+import Loader from '../../Loader/Loader'
 
 const Home = () => {
     const navigation = useNavigation()
     const { movies, setMovies } = useContext(MoviesContext)
+    const { showLoader, setshowLoader } = useContext(MoviesContext)
+    // const bannerImg = `http://image.tmdb.org/t/p/w185/${movies[5].poster_path}`
+    // const bannerName = movies[5].title
 
     // RenderMovies
     const RenderMovies = ({ item }) => {
@@ -73,7 +77,9 @@ const Home = () => {
         <>
             <StatusBar backgroundColor={Colors.BG} />
             <View style={{ flex: 1, }}>
+
                 <ImageBackground source={require('../../Assets/Images/main2.jpg')} style={{}}>
+                {/* <ImageBackground source={{ uri: bannerImg }} style={{}}> */}
 
                     {/* 1 */}
                     <View style={{ flexDirection: 'row', }}>
@@ -97,13 +103,12 @@ const Home = () => {
                         <Text style={{ fontSize: 20, color: Colors.WHITE, fontWeight: '400' }} onPress={() => { }}>My List</Text>
                     </View>
 
-
-
                     {/* 3 */}
                     <View style={{ marginTop: '45%' }}>
                         {/* 2.1 */}
                         <View style={{}}>
-                            <Text style={{ alignSelf: 'center', fontSize: 26, fontWeight: '900', color: Colors.WHITE }}>End-Game</Text>
+                            {/* <Text style={{ alignSelf: 'center', fontSize: 26, fontWeight: '900', color: Colors.WHITE }} numberOfLines={2} ellipsizeMode='middle'>{bannerName}</Text> */}
+                            <Text style={{ alignSelf: 'center', fontSize: 26, fontWeight: '900', color: Colors.WHITE }}>kok</Text>
                         </View>
                         {/* 2.2 */}
                         <View style={{}}>
@@ -118,20 +123,18 @@ const Home = () => {
                             </View>
                             {/* 2.3.2 */}
                             <View style={{ backgroundColor: Colors.backgroundColor, flexDirection: 'row', borderRadius: 5 }}>
-                                <TouchableOpacity style={{ flexDirection: 'row', right: 5 }} onPress={()=>navigation.navigate(Play)}>
+                                <TouchableOpacity style={{ flexDirection: 'row', right: 5 }} onPress={() => navigation.navigate(Play)}>
                                     <IconButton icon={'play'} size={25} iconColor={Colors.BLACK} />
                                     <Text style={{ alignSelf: 'center', right: 10, color: Colors.WHITE, fontWeight: '400' }}>Play</Text>
                                 </TouchableOpacity>
                             </View>
                             {/* 2.3.3 */}
                             <View>
-                                <IconButton icon={'information'} size={25} iconColor={Colors.WHITE} onPress={()=>navigation.navigate(Info)}/>
+                                <IconButton icon={'information'} size={25} iconColor={Colors.WHITE} onPress={() => navigation.navigate(Info)} />
                                 <Text style={{ alignSelf: 'center', bottom: 15, color: Colors.WHITE, fontWeight: '400' }}>Info</Text>
                             </View>
                         </View>
                     </View>
-
-
 
                 </ImageBackground>
                 {/* <ScrollView> */}
@@ -183,7 +186,7 @@ const Home = () => {
                 {/* </ScrollView> */}
 
             </View>
-
+            {showLoader ? <Loader /> : null}
         </>
     )
 }
