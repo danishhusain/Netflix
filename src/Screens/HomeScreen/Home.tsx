@@ -13,20 +13,20 @@ import Info from './Info'
 import Play from '../PlayScreen/Play'
 import Loader from '../../Loader/Loader'
 
+
 const Home = () => {
     const navigation = useNavigation()
-    const { movies, setMovies } = useContext(MoviesContext)
-    const { showLoader, setshowLoader } = useContext(MoviesContext)
+    const { movies } = useContext(MoviesContext)
+    const { showLoader } = useContext(MoviesContext)
     // const bannerImg = `http://image.tmdb.org/t/p/w185/${movies[5].poster_path}`
     // const bannerName = movies[5].title
 
     // RenderMovies
     const RenderMovies = ({ item }) => {
         const posterImg = `http://image.tmdb.org/t/p/w185/${item.poster_path}`
-        const backdropImg = `http://image.tmdb.org/t/p/w185/${item.backdrop_path}`
         return (
             <View style={{ borderRadius: 100, marginHorizontal: 4, }}>
-                <TouchableOpacity style={{ borderRadius: 100, marginHorizontal: 4, borderColor: 'blue' }}>
+                <TouchableOpacity style={{ borderRadius: 100, marginHorizontal: 4, borderColor: 'blue' }} onPress={() => navigation.navigate(Play)} >
                     <Image style={{ height: 120, width: 120, borderRadius: 100 }} source={{ uri: posterImg }} />
                     {/* <Image style={{height:100,width:100}} source={{uri:backdropImg}} /> */}
                     <Text style={{ width: 120, color: Colors.WHITE, fontWeight: '400' }} numberOfLines={1} ellipsizeMode="tail">{item.title}</Text>
@@ -37,12 +37,11 @@ const Home = () => {
     // continueWatching
     const continueWatching = ({ item }) => {
         const posterImg = `http://image.tmdb.org/t/p/w185/${item.poster_path}`
-        const backdropImg = `http://image.tmdb.org/t/p/w185/${item.backdrop_path}`
         return (
             <View style={{ marginHorizontal: 4, }}>
                 <View>
                     {/* <IconButton icon={'information'} iconColor={Colors.WHITE} /> */}
-                    <TouchableOpacity style={{ marginHorizontal: 4, }}>
+                    <TouchableOpacity style={{ marginHorizontal: 4, }} onPress={() => navigation.navigate(Play)}>
                         <Image style={{ height: 140, width: 120, }} source={{ uri: posterImg }} />
                         {/* <Image style={{height:100,width:100}} source={{uri:backdropImg}} /> */}
                         <Text style={{ width: 120, color: Colors.WHITE, fontWeight: '400' }} numberOfLines={1} ellipsizeMode="tail">{item.title}</Text>
@@ -59,12 +58,11 @@ const Home = () => {
     // continueWatching
     const MyList = ({ item }) => {
         const posterImg = `http://image.tmdb.org/t/p/w185/${item.poster_path}`
-        const backdropImg = `http://image.tmdb.org/t/p/w185/${item.backdrop_path}`
         return (
             <View style={{ marginHorizontal: 4, borderColor: 'blue' }}>
                 <View>
                     {/* <IconButton icon={'information'} iconColor={Colors.WHITE} /> */}
-                    <TouchableOpacity style={{ marginHorizontal: 4, borderColor: 'blue' }}>
+                    <TouchableOpacity style={{ marginHorizontal: 4, borderColor: 'blue' }} onPress={() => navigation.navigate(Play)}>
                         <Image style={{ height: 140, width: 120, }} source={{ uri: posterImg }} />
                         {/* <Image style={{height:100,width:100}} source={{uri:backdropImg}} /> */}
                         <Text style={{ width: 120, color: Colors.WHITE, fontWeight: '400', }} numberOfLines={1} ellipsizeMode="tail">{item.title}</Text>
