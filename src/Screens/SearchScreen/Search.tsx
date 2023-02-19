@@ -33,7 +33,7 @@ const Search = () => {
     return (
       <>
         <Card style={{ flexDirection: 'row', marginVertical: 2 }} >
-          <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => navigation.navigate(Play)}>
+          <TouchableOpacity style={{ flexDirection: 'row',paddingRight:250 }} onPress={() => navigation.navigate(Play)}>
             <View style={{ flexDirection: 'row', marginVertical: 2 }}>
               <View style={{ flexDirection: 'row' }}>
                 {/* <Text style={{ fontSize: 20, }}>Poupular Searches</Text> */}

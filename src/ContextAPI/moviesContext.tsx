@@ -5,7 +5,22 @@ import { createContext } from 'react'
 export const MoviesContext = createContext()
 export default function MoviesContextProvider({ children }) {
   const [movies, setMovies] = useState()
+  const [info, setInfo] = useState()
   const [showLoader, setshowLoader] = useState(false)
+  const RandomNo=Math.floor(Math.random()*20)
+
+  //
+
+  // const bannerData = () => {
+  //   const bannerImg = `http://image.tmdb.org/t/p/w185/${movies[5].poster_path}`
+  //   const bannerName = movies[5].title
+  //   const bannerInfo = movies[5]
+  //   return(
+  //     bannerImg
+  //   )
+  
+  // }
+
   useEffect(() => {
     setshowLoader(true)
     fetchMovies()
@@ -17,6 +32,8 @@ export default function MoviesContextProvider({ children }) {
         // console.log(response.data.results[2].overview);
         setMovies(response.data.results)
         setshowLoader(false)
+        // bannerData()
+
       })
       .catch(function (error) {
         console.log(error);
@@ -24,13 +41,16 @@ export default function MoviesContextProvider({ children }) {
       .then(function () {
         // always executed
       });
-      // setshowLoader(false)
-
+    // setshowLoader(false)
   }
+      // console.log("Loading", bannerImg)
   return (
     <MoviesContext.Provider value={{
       movies, setMovies,
-      showLoader, setshowLoader
+      showLoader, setshowLoader,
+      info, setInfo,
+      RandomNo
+
 
     }}>
       {children}

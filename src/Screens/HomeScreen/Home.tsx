@@ -8,18 +8,16 @@ import axios from 'axios'
 import { MoviesContext } from '../../ContextAPI/moviesContext'
 import Profile from '../ProfileScreen/Profile'
 import Downloads from '../DownloadsScreen/Downloads'
-import MovieDetailPage from '../DownloadsScreen/MovieDetailPage'
-import Info from './Info'
 import Play from '../PlayScreen/Play'
 import Loader from '../../Loader/Loader'
+import MovieDetailPage from '../DownloadsScreen/MovieDetailPage'
 
 
 const Home = () => {
     const navigation = useNavigation()
-    const { movies } = useContext(MoviesContext)
+    const { movies, info, setInfo,RandomNo } = useContext(MoviesContext)
     const { showLoader } = useContext(MoviesContext)
-    // const bannerImg = `http://image.tmdb.org/t/p/w185/${movies[5].poster_path}`
-    // const bannerName = movies[5].title
+    // const RandomNo=Math.floor(Math.random()*20)
 
     // RenderMovies
     const RenderMovies = ({ item }) => {
@@ -48,13 +46,19 @@ const Home = () => {
                     </TouchableOpacity>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', backgroundColor: Colors.backgroundColor, marginHorizontal: 4, }}>
-                    <IconButton icon={'information'} iconColor={Colors.WHITE} />
+                    <IconButton icon={'information'} iconColor={Colors.WHITE}
+                        onPress={() => {
+                            navigation.navigate(MovieDetailPage),
+                                setInfo(item)
+
+                        }} />
                     <IconButton icon={'dots-vertical'} iconColor={Colors.WHITE} />
 
                 </View>
             </View>
         )
     }
+    // console.log('MovieDetailPage', info)
     // continueWatching
     const MyList = ({ item }) => {
         const posterImg = `http://image.tmdb.org/t/p/w185/${item.poster_path}`
@@ -76,8 +80,8 @@ const Home = () => {
             <StatusBar backgroundColor={Colors.BG} />
             <View style={{ flex: 1, }}>
 
-                <ImageBackground source={require('../../Assets/Images/main2.jpg')} style={{}}>
-                {/* <ImageBackground source={{ uri: bannerImg }} style={{}}> */}
+                {/* <ImageBackground source={require('../../Assets/Images/main2.jpg')} style={{}}> */}
+                {movies && <ImageBackground source={{ uri: `http://image.tmdb.org/t/p/w185/${movies[RandomNo].poster_path}` }} style={{}}>
 
                     {/* 1 */}
                     <View style={{ flexDirection: 'row', }}>
@@ -105,12 +109,12 @@ const Home = () => {
                     <View style={{ marginTop: '45%' }}>
                         {/* 2.1 */}
                         <View style={{}}>
-                            {/* <Text style={{ alignSelf: 'center', fontSize: 26, fontWeight: '900', color: Colors.WHITE }} numberOfLines={2} ellipsizeMode='middle'>{bannerName}</Text> */}
-                            <Text style={{ alignSelf: 'center', fontSize: 26, fontWeight: '900', color: Colors.WHITE }}>kok</Text>
+                            {/* <Text style={{ alignSelf: 'center', fontSize: 26, fontWeight: '900', color: Colors.WHITE }} numberOfLines={2} ellipsizeMode='middle'>{bannerData[1]}</Text> */}
+                            {movies && <Text style={{ alignSelf: 'center', fontSize: 26, fontWeight: '900', color: Colors.WHITE }}>{movies[RandomNo].title}</Text>}
                         </View>
                         {/* 2.2 */}
                         <View style={{}}>
-                            <Text style={{ alignSelf: 'center', fontSize: 20, color: Colors.WHITE, fontWeight: '400' }}>TvShows. TextTo.TvSHows.US</Text>
+                            <Text style={{ alignSelf: 'center', fontSize: 14, color: Colors.WHITE, fontWeight: '400' }}>TvShows. TextTo.TvSHows.US</Text>
                         </View>
                         {/* 2.3 */}
                         <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', backgroundColor: Colors.BLACK, }}>
@@ -128,13 +132,17 @@ const Home = () => {
                             </View>
                             {/* 2.3.3 */}
                             <View>
-                                <IconButton icon={'information'} size={25} iconColor={Colors.WHITE} onPress={() => navigation.navigate(Info)} />
+                                <IconButton icon={'information'} size={25} iconColor={Colors.WHITE} onPress={() => {
+                                    navigation.navigate(MovieDetailPage)
+                                    setInfo(movies[RandomNo])
+
+                                }} />
                                 <Text style={{ alignSelf: 'center', bottom: 15, color: Colors.WHITE, fontWeight: '400' }}>Info</Text>
                             </View>
                         </View>
                     </View>
 
-                </ImageBackground>
+                </ImageBackground>}
                 {/* <ScrollView> */}
                 {/* <View> */}
                 <ScrollView>

@@ -3,11 +3,13 @@ import React, { useContext } from 'react'
 import { MoviesContext } from '../../ContextAPI/moviesContext'
 import { Button, IconButton } from 'react-native-paper'
 import { Colors } from '../../CustomComponents/CustomColor'
+import Play from '../PlayScreen/Play'
+import { useNavigation } from '@react-navigation/native'
 
 const MovieDetailPage = () => {
-    const { movies, setMovies } = useContext(MoviesContext)
+    const navigation = useNavigation()
+    const { movies, setMovies, info, setInfo, RandomNo } = useContext(MoviesContext)
     const { width, height } = Dimensions.get('window');
-    const posterImg = `http://image.tmdb.org/t/p/w185/${movies[1].poster_path}`
 
 
     const renderMoreLikeThis = ({ item }) => {
@@ -16,7 +18,7 @@ const MovieDetailPage = () => {
         return (
             <View style={{ marginHorizontal: 4, borderColor: 'blue' }}>
                 <View>
-                    <TouchableOpacity style={{ marginHorizontal: 4, borderColor: 'blue' }}>
+                    <TouchableOpacity style={{ marginHorizontal: 4, borderColor: 'blue' }} onPress={() => navigation.navigate(Play)}>
                         <Image style={{ height: 140, width: 120, }} source={{ uri: posterImg }} />
                         {/* <Image style={{height:100,width:100}} source={{uri:backdropImg}} /> */}
                         <Text style={{ width: 120, fontSize: 18 }} numberOfLines={1} ellipsizeMode="tail">{item.title}</Text>
@@ -29,12 +31,13 @@ const MovieDetailPage = () => {
     return (
         <ScrollView>
 
-        <View>
+            <View>
                 {/* 1 */}
-                <View style={{ width: '100%',  }}>
+                <View style={{ width: '100%', }}>
                     {/* <View style={{width: '100%',height:'30%',}}> */}
-                    <Image source={require('../../Assets/Images/main2.jpg')} style={{ borderBottomLeftRadius: 5, borderBottomRightRadius: 5,height:220,width:"100%" }} />
-                    {/* <Image source={{uri:posterImg}} style={{ borderBottomLeftRadius: 5, borderBottomRightRadius: 5,height:220,width:"100%" }} /> */}
+                    {/* <Image source={require('../../Assets/Images/main2.jpg')} style={{ borderBottomLeftRadius: 5, borderBottomRightRadius: 5,height:220,width:"100%" }} /> */}
+                    {info && <Image source={{ uri: `http://image.tmdb.org/t/p/w185/${info.poster_path}` }} style={{ borderBottomLeftRadius: 5, borderBottomRightRadius: 5, height: 220, width: "100%" }} />}
+                    {/* <Image source={{ uri: `http://image.tmdb.org/t/p/w185/${info.poster_path}` }} style={{ borderBottomLeftRadius: 5, borderBottomRightRadius: 5, height: 220, width: "100%" }} /> */}
                     {/* </View> */}
                     {/* 2 */}
                 </View>
@@ -42,15 +45,15 @@ const MovieDetailPage = () => {
                 <View style={{ flexDirection: 'row', justifyContent: 'space-around' }} >
                     <View>
                         <Text>Popularity</Text>
-                        <Text>{movies[1].popularity}</Text>
+                        <Text>{info.popularity}</Text>
                     </View>
                     <View>
                         <Text>Language</Text>
-                        <Text>{movies[1].original_language}</Text>
+                        <Text>{info.original_language}</Text>
                     </View>
                     <View>
                         <Text>Release_Date</Text>
-                        <Text>{movies[1].release_date}</Text>
+                        <Text>{info.release_date}</Text>
                     </View>
 
                 </View>
@@ -59,7 +62,7 @@ const MovieDetailPage = () => {
                 <View >
                     {/* 3.1 */}
                     <View style={{ backgroundColor: Colors.BLACK, margin: 5 }}>
-                        <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
+                        <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.navigate(Play)}>
                             <IconButton icon={'play'} />
                             <Text style={{ alignSelf: 'center' }}>Play</Text>
                         </TouchableOpacity>
@@ -75,7 +78,7 @@ const MovieDetailPage = () => {
                 </View>
                 {/* 4 */}
                 <View style={{ margin: 5, height: 120, width: '100%' }}>
-                    <Text>{movies[8].overview}</Text>
+                    <Text>{info.overview}</Text>
                 </View>
                 {/* 5 */}
                 <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
@@ -108,7 +111,7 @@ const MovieDetailPage = () => {
                         horizontal={true}
                     />
                 </View>
-        </View >
+            </View >
         </ScrollView >
 
     )
