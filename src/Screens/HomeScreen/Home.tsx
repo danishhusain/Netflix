@@ -123,7 +123,7 @@ const Home = () => {
                             <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', backgroundColor: Colors.BLACK, }}>
                                 {/* 2.3.1 */}
                                 <View style={{}}>
-                                    <IconButton icon={'check'} size={25} iconColor={Colors.WHITE} />
+                                    <IconButton icon={'check'} size={25} iconColor={Colors.WHITE} onPress={()=>navigation.navigate(MyList)}/>
                                     <Text style={{ alignSelf: 'center', bottom: 15, color: Colors.WHITE, fontWeight: '400' }}>My List</Text>
                                 </View>
                                 {/* 2.3.2 */}
