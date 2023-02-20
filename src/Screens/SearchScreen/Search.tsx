@@ -5,6 +5,7 @@ import { View, Text, FlatList, Image, TouchableOpacity } from 'react-native'
 import { MoviesContext } from '../../ContextAPI/moviesContext';
 import { CurrentRenderContext, useNavigation } from '@react-navigation/native';
 import Play from '../PlayScreen/Play';
+import Loader from '../../Loader/Loader';
 
 
 const Search = () => {
@@ -33,7 +34,7 @@ const Search = () => {
     return (
       <>
         <Card style={{ flexDirection: 'row', marginVertical: 2 }} >
-          <TouchableOpacity style={{ flexDirection: 'row',paddingRight:250 }} onPress={() => navigation.navigate(Play)}>
+          <TouchableOpacity style={{ flexDirection: 'row', paddingRight: 250 }} onPress={() => navigation.navigate(Play)}>
             <View style={{ flexDirection: 'row', marginVertical: 2 }}>
               <View style={{ flexDirection: 'row' }}>
                 {/* <Text style={{ fontSize: 20, }}>Poupular Searches</Text> */}
@@ -62,9 +63,10 @@ const Search = () => {
 
         />
       </View>
-      <View>
-        <Text style={{ fontSize: 20, left: 5 }}>Poupular Searches</Text>
-      </View>
+        <View>
+          <Text style={{ fontSize: 20, left: 5 }}>Poupular Searches</Text>
+        </View>
+
       <View style={{ justifyContent: 'space-between', margin: 5 }}>
         <FlatList
           data={filteredData}

@@ -15,7 +15,7 @@ import MovieDetailPage from '../DownloadsScreen/MovieDetailPage'
 
 const Home = () => {
     const navigation = useNavigation()
-    const { movies, info, setInfo,RandomNo } = useContext(MoviesContext)
+    const { movies, info, setInfo, RandomNo } = useContext(MoviesContext)
     const { showLoader } = useContext(MoviesContext)
     // const RandomNo=Math.floor(Math.random()*20)
 
@@ -74,125 +74,129 @@ const Home = () => {
                 </View>
             </View>
         )
+
     }
     return (
         <>
             <StatusBar backgroundColor={Colors.BG} />
-            <View style={{ flex: 1, }}>
+            {!movies ? <Loader /> :
 
-                {/* <ImageBackground source={require('../../Assets/Images/main2.jpg')} style={{}}> */}
-                {movies && <ImageBackground source={{ uri: `http://image.tmdb.org/t/p/w185/${movies[RandomNo].poster_path}` }} style={{}}>
+                <View style={{ flex: 1, }}>
 
-                    {/* 1 */}
-                    <View style={{ flexDirection: 'row', }}>
-                        <View>
-                            <IconButton icon={'netflix'} iconColor={Colors.RED} size={30} />
-                        </View>
+                    {/* <ImageBackground source={require('../../Assets/Images/main2.jpg')} style={{}}> */}
+                    {movies && <ImageBackground source={{ uri: `http://image.tmdb.org/t/p/w185/${movies[RandomNo].poster_path}` }} style={{}}>
 
                         {/* 1 */}
-                        <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', marginHorizontal: 4, }}>
-                            <TouchableOpacity style={{ height: 30, width: 30, right: 5, borderRadius: 5 }} onPress={() => navigation.navigate(Profile)}>
-                                <Image style={{ height: 30, width: 30, right: 5, borderRadius: 5 }} source={require('../../Assets/Images/account.png')} />
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-
-
-                    {/* 1 */}
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
-                        <Text style={{ fontSize: 20, color: Colors.WHITE, fontWeight: '400' }} onPress={() => { }}>Tv Shows</Text>
-                        <Text style={{ fontSize: 20, color: Colors.WHITE, fontWeight: '400' }} onPress={() => { }}>Movies</Text>
-                        <Text style={{ fontSize: 20, color: Colors.WHITE, fontWeight: '400' }} onPress={() => { }}>My List</Text>
-                    </View>
-
-                    {/* 3 */}
-                    <View style={{ marginTop: '45%' }}>
-                        {/* 2.1 */}
-                        <View style={{}}>
-                            {/* <Text style={{ alignSelf: 'center', fontSize: 26, fontWeight: '900', color: Colors.WHITE }} numberOfLines={2} ellipsizeMode='middle'>{bannerData[1]}</Text> */}
-                            {movies && <Text style={{ alignSelf: 'center', fontSize: 26, fontWeight: '900', color: Colors.WHITE }}>{movies[RandomNo].title}</Text>}
-                        </View>
-                        {/* 2.2 */}
-                        <View style={{}}>
-                            <Text style={{ alignSelf: 'center', fontSize: 14, color: Colors.WHITE, fontWeight: '400' }}>TvShows. TextTo.TvSHows.US</Text>
-                        </View>
-                        {/* 2.3 */}
-                        <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', backgroundColor: Colors.BLACK, }}>
-                            {/* 2.3.1 */}
-                            <View style={{}}>
-                                <IconButton icon={'check'} size={25} iconColor={Colors.WHITE} />
-                                <Text style={{ alignSelf: 'center', bottom: 15, color: Colors.WHITE, fontWeight: '400' }}>My List</Text>
+                        <View style={{ flexDirection: 'row', }}>
+                            <View>
+                                <IconButton icon={'netflix'} iconColor={Colors.RED} size={30} />
                             </View>
-                            {/* 2.3.2 */}
-                            <View style={{ backgroundColor: Colors.backgroundColor, flexDirection: 'row', borderRadius: 5 }}>
-                                <TouchableOpacity style={{ flexDirection: 'row', right: 5 }} onPress={() => navigation.navigate(Play)}>
-                                    <IconButton icon={'play'} size={25} iconColor={Colors.BLACK} />
-                                    <Text style={{ alignSelf: 'center', right: 10, color: Colors.WHITE, fontWeight: '400' }}>Play</Text>
+
+                            {/* 1 */}
+                            <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'flex-end', alignItems: 'center', marginHorizontal: 4, }}>
+                                <TouchableOpacity style={{ height: 30, width: 30, right: 5, borderRadius: 5 }} onPress={() => navigation.navigate(Profile)}>
+                                    <Image style={{ height: 30, width: 30, right: 5, borderRadius: 5 }} source={require('../../Assets/Images/account.png')} />
                                 </TouchableOpacity>
                             </View>
-                            {/* 2.3.3 */}
-                            <View>
-                                <IconButton icon={'information'} size={25} iconColor={Colors.WHITE} onPress={() => {
-                                    navigation.navigate(MovieDetailPage)
-                                    setInfo(movies[RandomNo])
+                        </View>
 
-                                }} />
-                                <Text style={{ alignSelf: 'center', bottom: 15, color: Colors.WHITE, fontWeight: '400' }}>Info</Text>
+
+                        {/* 1 */}
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
+                            <Text style={{ fontSize: 20, color: Colors.WHITE, fontWeight: '400' }} onPress={() => { }}>Tv Shows</Text>
+                            <Text style={{ fontSize: 20, color: Colors.WHITE, fontWeight: '400' }} onPress={() => { }}>Movies</Text>
+                            <Text style={{ fontSize: 20, color: Colors.WHITE, fontWeight: '400' }} onPress={() => { }}>My List</Text>
+                        </View>
+
+                        {/* 3 */}
+                        <View style={{ marginTop: '45%' }}>
+                            {/* 2.1 */}
+                            <View style={{}}>
+                                {/* <Text style={{ alignSelf: 'center', fontSize: 26, fontWeight: '900', color: Colors.WHITE }} numberOfLines={2} ellipsizeMode='middle'>{bannerData[1]}</Text> */}
+                                {movies && <Text style={{ alignSelf: 'center', fontSize: 26, fontWeight: '900', color: Colors.WHITE }}>{movies[RandomNo].title}</Text>}
+                            </View>
+                            {/* 2.2 */}
+                            <View style={{}}>
+                                <Text style={{ alignSelf: 'center', fontSize: 14, color: Colors.WHITE, fontWeight: '400' }}>TvShows. TextTo.TvSHows.US</Text>
+                            </View>
+                            {/* 2.3 */}
+                            <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', backgroundColor: Colors.BLACK, }}>
+                                {/* 2.3.1 */}
+                                <View style={{}}>
+                                    <IconButton icon={'check'} size={25} iconColor={Colors.WHITE} />
+                                    <Text style={{ alignSelf: 'center', bottom: 15, color: Colors.WHITE, fontWeight: '400' }}>My List</Text>
+                                </View>
+                                {/* 2.3.2 */}
+                                <View style={{ backgroundColor: Colors.backgroundColor, flexDirection: 'row', borderRadius: 5 }}>
+                                    <TouchableOpacity style={{ flexDirection: 'row', right: 5 }} onPress={() => navigation.navigate(Play)}>
+                                        <IconButton icon={'play'} size={25} iconColor={Colors.BLACK} />
+                                        <Text style={{ alignSelf: 'center', right: 10, color: Colors.WHITE, fontWeight: '400' }}>Play</Text>
+                                    </TouchableOpacity>
+                                </View>
+                                {/* 2.3.3 */}
+                                <View>
+                                    <IconButton icon={'information'} size={25} iconColor={Colors.WHITE} onPress={() => {
+                                        navigation.navigate(MovieDetailPage)
+                                        setInfo(movies[RandomNo])
+
+                                    }} />
+                                    <Text style={{ alignSelf: 'center', bottom: 15, color: Colors.WHITE, fontWeight: '400' }}>Info</Text>
+                                </View>
                             </View>
                         </View>
-                    </View>
 
-                </ImageBackground>}
-                {/* <ScrollView> */}
-                {/* <View> */}
-                <ScrollView>
-                    {/* 4 */}
-                    <View style={{ backgroundColor: Colors.BLACK }}>
-                        <Text style={{ fontSize: 18, color: Colors.WHITE, fontWeight: '500' }}>Preview</Text>
-                    </View>
-                    {/* 5 */}
-                    <View style={{ backgroundColor: Colors.BLACK }}>
-                        <FlatList
-                            data={movies}
-                            renderItem={RenderMovies}
-                            keyExtractor={item => item.id}
-                            horizontal={true}
-                        />
-                    </View>
-                    {/* 6 */}
-                    <View style={{ backgroundColor: Colors.BLACK }}>
-                        <Text style={{ fontSize: 18, color: Colors.WHITE, fontWeight: '500' }}>Continue whatching</Text>
+                    </ImageBackground>}
+                    {/* <ScrollView> */}
+                    {/* <View> */}
+                    <ScrollView>
+                        {/* 4 */}
+                        <View style={{ backgroundColor: Colors.BLACK }}>
+                            <Text style={{ fontSize: 18, color: Colors.WHITE, fontWeight: '500' }}>Preview</Text>
+                        </View>
+                        {/* 5 */}
+                        <View style={{ backgroundColor: Colors.BLACK }}>
+                            <FlatList
+                                data={movies}
+                                renderItem={RenderMovies}
+                                keyExtractor={item => item.id}
+                                horizontal={true}
+                            />
+                        </View>
+                        {/* 6 */}
+                        <View style={{ backgroundColor: Colors.BLACK }}>
+                            <Text style={{ fontSize: 18, color: Colors.WHITE, fontWeight: '500' }}>Continue whatching</Text>
 
-                    </View>
-                    {/* 6 */}
-                    <View style={{ backgroundColor: Colors.BLACK }}>
-                        <FlatList
-                            data={movies}
-                            renderItem={continueWatching}
-                            keyExtractor={item => item.id}
-                            horizontal={true}
-                        />
-                    </View>
-                    {/* 8 */}
-                    <View style={{ backgroundColor: Colors.BLACK }}>
-                        <Text style={{ fontSize: 18, color: Colors.WHITE, fontWeight: '500' }}>My List</Text>
+                        </View>
+                        {/* 6 */}
+                        <View style={{ backgroundColor: Colors.BLACK }}>
+                            <FlatList
+                                data={movies}
+                                renderItem={continueWatching}
+                                keyExtractor={item => item.id}
+                                horizontal={true}
+                            />
+                        </View>
+                        {/* 8 */}
+                        <View style={{ backgroundColor: Colors.BLACK }}>
+                            <Text style={{ fontSize: 18, color: Colors.WHITE, fontWeight: '500' }}>My List</Text>
 
-                    </View>
-                    {/* 9 */}
-                    <View style={{ backgroundColor: Colors.BLACK }}>
-                        <FlatList
-                            data={movies}
-                            renderItem={MyList}
-                            keyExtractor={item => item.id}
-                            horizontal={true}
-                        />
-                    </View>
-                </ScrollView>
-                {/* </View> */}
-                {/* </ScrollView> */}
+                        </View>
+                        {/* 9 */}
+                        <View style={{ backgroundColor: Colors.BLACK }}>
+                            <FlatList
+                                data={movies}
+                                renderItem={MyList}
+                                keyExtractor={item => item.id}
+                                horizontal={true}
+                            />
+                        </View>
+                    </ScrollView>
+                    {/* </View> */}
+                    {/* </ScrollView> */}
 
-            </View>
-            {showLoader ? <Loader /> : null}
+                </View>
+                // {showLoader ? <Loader /> : null}
+            }
         </>
     )
 }
