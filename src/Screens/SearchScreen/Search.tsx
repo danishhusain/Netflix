@@ -39,7 +39,7 @@ const Search = () => {
               <View style={{ flexDirection: 'row' }}>
                 {/* <Text style={{ fontSize: 20, }}>Poupular Searches</Text> */}
                 {/* <Image style={{ height: 80, width: 120, }} source={{ uri: posterImg }} /> */}
-                <Image style={{ height: 80, width: 120, }} source={{ uri: backdropImg }} />
+                <Image style={{ height: 80, width: 120,borderTopLeftRadius:10,borderBottomLeftRadius:10 }} source={{ uri: backdropImg }} />
               </View>
 
               <View style={{ left: 5, justifyContent: 'center' }}>
@@ -53,7 +53,7 @@ const Search = () => {
     )
   }
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1,backgroundColor:Colors.BLACK }}>
       <View>
         <Searchbar
           placeholder="Search for show movie, genre,etc"
@@ -64,10 +64,10 @@ const Search = () => {
         />
       </View>
         <View>
-          <Text style={{ fontSize: 20, left: 5 }}>Poupular Searches</Text>
+          <Text style={{ fontSize: 20, left: 5 ,color:Colors.WHITE}}>Poupular Searches</Text>
         </View>
 
-      <View style={{ justifyContent: 'space-between', margin: 5 }}>
+      <View style={{ justifyContent: 'space-between', margin: 5,flex:1 }}>
         <FlatList
           data={filteredData}
           renderItem={renderSearches}

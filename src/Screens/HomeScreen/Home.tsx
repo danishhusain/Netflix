@@ -122,9 +122,11 @@ const Home = () => {
                             {/* 2.3 */}
                             <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', backgroundColor: Colors.BLACK, }}>
                                 {/* 2.3.1 */}
-                                <View style={{}}>
+                                <View style={{}} >
+                                    <TouchableOpacity onPress={()=>navigation.navigate(MyList)}>
                                     <IconButton icon={'check'} size={25} iconColor={Colors.WHITE} onPress={()=>navigation.navigate(MyList)}/>
                                     <Text style={{ alignSelf: 'center', bottom: 15, color: Colors.WHITE, fontWeight: '400' }}>My List</Text>
+                                    </TouchableOpacity>
                                 </View>
                                 {/* 2.3.2 */}
                                 <View style={{ backgroundColor: Colors.backgroundColor, flexDirection: 'row', borderRadius: 5 }}>
@@ -135,12 +137,16 @@ const Home = () => {
                                 </View>
                                 {/* 2.3.3 */}
                                 <View>
+                                <TouchableOpacity onPress={()=>navigation.navigate(MovieDetailPage)}>
+
                                     <IconButton icon={'information'} size={25} iconColor={Colors.WHITE} onPress={() => {
                                         navigation.navigate(MovieDetailPage)
                                         setInfo(movies[RandomNo])
 
                                     }} />
                                     <Text style={{ alignSelf: 'center', bottom: 15, color: Colors.WHITE, fontWeight: '400' }}>Info</Text>
+                                    </TouchableOpacity>
+
                                 </View>
                             </View>
                         </View>

@@ -9,14 +9,15 @@ import More from '../Screens/MoreScreen/More';
 import Home from '../Screens/HomeScreen/Home';
 import Main from '../Screens/MainScreen/Main';
 import MovieDetailPage from '../Screens/DownloadsScreen/MovieDetailPage';
+import { Colors } from '../CustomComponents/CustomColor';
 
 
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator()
 
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false, }}>
-      <Tab.Screen name='Home' component={Home} options={{
+    <Tab.Navigator screenOptions={{ headerShown: false,tabBarActiveBackgroundColor:Colors.BLACK, tabBarStyle: { backgroundColor: Colors.BLACK },}}  >
+      <Tab.Screen name='Home'  component={Home} options={{
         tabBarIcon: () => (<IconButton icon={"home"} size={25} />)
       }} />
       <Tab.Screen name='Search' component={Search} options={{

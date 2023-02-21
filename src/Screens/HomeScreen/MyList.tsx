@@ -4,10 +4,13 @@ import { MoviesContext } from '../../ContextAPI/moviesContext'
 import { Card } from 'react-native-paper'
 import { useNavigation } from '@react-navigation/native'
 import Play from '../PlayScreen/Play'
+import { Colors } from '../../CustomComponents/CustomColor'
+
 
 const MyList = () => {
     const navigation=useNavigation()
     const { movies, setMovies } = useContext(MoviesContext)
+
 
     const renderSearches = ({ item }) => {
         // const posterImg = `http://image.tmdb.org/t/p/w185/${item.poster_path}`
@@ -21,7 +24,7 @@ const MyList = () => {
                   <View style={{ flexDirection: 'row' }}>
                     {/* <Text style={{ fontSize: 20, }}>Poupular Searches</Text> */}
                     {/* <Image style={{ height: 80, width: 120, }} source={{ uri: posterImg }} /> */}
-                    <Image style={{ height: 80, width: 120, }} source={{ uri: backdropImg }} />
+                    <Image style={{ height: 80, width: 120, borderBottomLeftRadius:8,borderTopLeftRadius:8}} source={{ uri: backdropImg }} />
                   </View>
     
                   <View style={{ left: 5, justifyContent: 'center' }}>
@@ -35,9 +38,9 @@ const MyList = () => {
         )
       }
   return (
-    <View style={{flex:1}}>
+    <View style={{flex:1,backgroundColor:Colors.BLACK}}>
        <View>
-          <Text style={{ fontSize: 20, left: 5 }}>Your List</Text>
+          <Text style={{ fontSize: 20, left: 5 ,color:Colors.WHITE}}>Your List</Text>
         </View>
 
       <View style={{ justifyContent: 'space-between', margin: 5 ,flex:1}}>

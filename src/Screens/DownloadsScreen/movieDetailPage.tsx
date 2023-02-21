@@ -21,7 +21,7 @@ const MovieDetailPage = () => {
                     <TouchableOpacity style={{ marginHorizontal: 4, borderColor: 'blue' }} onPress={() => navigation.navigate(Play)}>
                         <Image style={{ height: 140, width: 120, }} source={{ uri: posterImg }} />
                         {/* <Image style={{height:100,width:100}} source={{uri:backdropImg}} /> */}
-                        <Text style={{ width: 120, fontSize: 18 }} numberOfLines={1} ellipsizeMode="tail">{item.title}</Text>
+                        <Text style={{ width: 120, fontSize: 18,color:Colors.WHITE }} numberOfLines={1} ellipsizeMode="tail">{item.title}</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -31,7 +31,7 @@ const MovieDetailPage = () => {
     return (
         <ScrollView>
 
-            <View>
+            <View style={{backgroundColor:Colors.BLACK}}>
                 {/* 1 */}
                 <View style={{ width: '100%', }}>
                     {/* <View style={{width: '100%',height:'30%',}}> */}
@@ -44,16 +44,16 @@ const MovieDetailPage = () => {
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-around' }} >
                     <View>
-                        <Text>Popularity</Text>
-                        <Text>{info.popularity}</Text>
+                        <Text style={{color:Colors.WHITE}}>Popularity</Text>
+                        <Text style={{color:Colors.WHITE}}>{info.popularity}</Text>
                     </View>
                     <View>
-                        <Text>Language</Text>
-                        <Text>{info.original_language}</Text>
+                        <Text style={{color:Colors.WHITE}}>Language</Text>
+                        <Text style={{color:Colors.WHITE}}>{info.original_language}</Text>
                     </View>
                     <View>
-                        <Text>Release_Date</Text>
-                        <Text>{info.release_date}</Text>
+                        <Text style={{color:Colors.WHITE}}>Release_Date</Text>
+                        <Text style={{color:Colors.WHITE}}>{info.release_date}</Text>
                     </View>
 
                 </View>
@@ -61,45 +61,45 @@ const MovieDetailPage = () => {
                 {/* 3 */}
                 <View >
                     {/* 3.1 */}
-                    <View style={{ backgroundColor: Colors.BLACK, margin: 5 }}>
+                    <View style={{ backgroundColor: Colors.backgroundColor, margin: 5 }}>
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }} onPress={() => navigation.navigate(Play)}>
-                            <IconButton icon={'play'} />
-                            <Text style={{ alignSelf: 'center' }}>Play</Text>
+                            <IconButton icon={'play'} iconColor={Colors.WHITE}/>
+                            <Text style={{ alignSelf: 'center',color:Colors.WHITE }}>Play</Text>
                         </TouchableOpacity>
                     </View>
                     {/* 3.2 */}
                     <View style={{ backgroundColor: Colors.GRAY, margin: 5 }}>
                         <TouchableOpacity style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center' }}>
-                            <IconButton icon={'download'} />
-                            <Text style={{ alignSelf: 'center' }}>Download</Text>
+                            <IconButton icon={'download'}iconColor={Colors.WHITE} />
+                            <Text style={{ alignSelf: 'center',color:Colors.WHITE }}>Download</Text>
                         </TouchableOpacity>
                     </View>
 
                 </View>
                 {/* 4 */}
                 <View style={{ margin: 5, height: 120, width: '100%' }}>
-                    <Text>{info.overview}</Text>
+                    <Text style={{color:Colors.WHITE}}>{info.overview}</Text>
                 </View>
                 {/* 5 */}
                 <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
                     {/* 5.1 */}
                     <View >
-                        <IconButton icon={'check'} />
-                        <Text style={{ alignSelf: 'center', bottom: 5 }}>My List</Text>
+                        <IconButton icon={'check'} iconColor={Colors.WHITE}/>
+                        <Text style={{ alignSelf: 'center', bottom: 5,color:Colors.WHITE }}>My List</Text>
                     </View>
                     {/* 5.2 */}
                     <View>
-                        <IconButton icon={'thumb-up-outline'} />
-                        <Text style={{ alignSelf: 'center', bottom: 5 }}>Rate</Text>
+                        <IconButton icon={'thumb-up-outline'} iconColor={Colors.WHITE}/>
+                        <Text style={{ alignSelf: 'center', bottom: 5 ,color:Colors.WHITE}}>Rate</Text>
                     </View>
                     {/* 5.2 */}
                     <View>
-                        <IconButton icon={'share-variant'} />
-                        <Text style={{ alignSelf: 'center', bottom: 5 }}>Share</Text>
+                        <IconButton icon={'share-variant'} iconColor={Colors.WHITE}/>
+                        <Text style={{ alignSelf: 'center', bottom: 5 ,color:Colors.WHITE}}>Share</Text>
                     </View>
                 </View>
                 <View style={{ paddingLeft: 5, }}>
-                    <Text style={{ fontSize: 18 }}>More Like This</Text>
+                    <Text style={{ fontSize: 18,color:Colors.WHITE }}>More Like This</Text>
                 </View>
                 {/* 6 */}
                 <View style={{}}>
