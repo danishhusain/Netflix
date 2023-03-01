@@ -80,7 +80,6 @@ const Home = () => {
         <>
             <StatusBar backgroundColor={Colors.BG} />
             {!movies ? <Loader /> :
-
                 <View style={{ flex: 1, }}>
 
                     {/* <ImageBackground source={require('../../Assets/Images/main2.jpg')} style={{}}> */}
@@ -120,7 +119,7 @@ const Home = () => {
                                 <Text style={{ alignSelf: 'center', fontSize: 14, color: Colors.WHITE, fontWeight: '400' }}>TvShows. TextTo.TvSHows.US</Text>
                             </View>
                             {/* 2.3 */}
-                            <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center', backgroundColor: Colors.BLACK, }}>
+                            <View style={{ flexDirection: 'row',top:5, justifyContent: 'space-around', alignItems: 'center',  }}>
                                 {/* 2.3.1 */}
                                 <View style={{}} >
                                     <TouchableOpacity onPress={()=>navigation.navigate(MyList)}>
@@ -201,7 +200,6 @@ const Home = () => {
                     {/* </ScrollView> */}
 
                 </View>
-                // {showLoader ? <Loader /> : null}
             }
         </>
     )

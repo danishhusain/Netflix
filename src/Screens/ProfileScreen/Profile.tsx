@@ -1,10 +1,11 @@
 import { View, Text } from 'react-native'
 import React from 'react'
+import Loader from '../../Loader/Loader'
 
 const Profile = () => {
   return (
-    <View>
-      <Text>Profile</Text>
+    <View style={{flex:1}}>
+      <Loader/>
     </View>
   )
 }

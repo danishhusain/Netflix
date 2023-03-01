@@ -15,6 +15,7 @@ import MovieDetailPage from '../Screens/DownloadsScreen/MovieDetailPage';
 import Play from '../Screens/PlayScreen/Play';
 import Loader from '../Loader/Loader';
 import MyList from '../Screens/HomeScreen/MyList';
+import LogIn from '../LogInSignIn/LogIn';
 
 
 
@@ -25,22 +26,23 @@ const Navigator = () => {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
 
             {/* <Stack.Screen name='TabNavigator' component={TabNavigator} options={{ headerShown: true }} /> */}
-            <Stack.Screen name='TabNavigator' component={TabNavigator} />
-            <Stack.Screen name='HomeScreen' component={Home} />
+            {/* <Stack.Screen name='TabNavigator' component={TabNavigator} /> */}
+            <Stack.Screen name='LogIn' component={LogIn} />
+            {/* <Stack.Screen name='HomeScreen' component={Home} />
 
             <Stack.Screen name='SearchScreen' component={Search} />
             <Stack.Screen name='ComingSoonScreen' component={ComingSoon} />
             <Stack.Screen name='DownloadsScreen' component={Downloads} />
             <Stack.Screen name='MoreScreen' component={More} />
-            <Stack.Screen name='MainScreen' component={Main} />
+            <Stack.Screen name='MainScreen' component={Main} /> */}
 
             {/* home */}
-            <Stack.Screen name='RenderMoviesComponents' component={RenderMoviesComponents} />
+            {/* <Stack.Screen name='RenderMoviesComponents' component={RenderMoviesComponents} />
             <Stack.Screen name='Profile' component={Profile} />
             <Stack.Screen name='MovieDetailPage' component={MovieDetailPage} />
             <Stack.Screen name='Play' component={Play} />
             <Stack.Screen name='Loader' component={Loader} />
-            <Stack.Screen name='MyList' component={MyList} />
+            <Stack.Screen name='MyList' component={MyList} /> */}
 
        
 

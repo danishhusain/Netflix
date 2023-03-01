@@ -11,6 +11,7 @@ const MovieDetailPage = () => {
     const { movies, setMovies, info, setInfo, RandomNo } = useContext(MoviesContext)
     const { width, height } = Dimensions.get('window');
 
+    // console.log(info)
 
     const renderMoreLikeThis = ({ item }) => {
         const posterImg = `http://image.tmdb.org/t/p/w185/${item.poster_path}`
@@ -33,13 +34,9 @@ const MovieDetailPage = () => {
 
             <View style={{backgroundColor:Colors.BLACK}}>
                 {/* 1 */}
-                <View style={{ width: '100%', }}>
-                    {/* <View style={{width: '100%',height:'30%',}}> */}
-                    {/* <Image source={require('../../Assets/Images/main2.jpg')} style={{ borderBottomLeftRadius: 5, borderBottomRightRadius: 5,height:220,width:"100%" }} /> */}
-                    {info && <Image source={{ uri: `http://image.tmdb.org/t/p/w185/${info.poster_path}` }} style={{ borderBottomLeftRadius: 5, borderBottomRightRadius: 5, height: 220, width: "100%" }} />}
-                    {/* <Image source={{ uri: `http://image.tmdb.org/t/p/w185/${info.poster_path}` }} style={{ borderBottomLeftRadius: 5, borderBottomRightRadius: 5, height: 220, width: "100%" }} /> */}
-                    {/* </View> */}
-                    {/* 2 */}
+                <View style={{  }}>
+                    {info && <ImageBackground source={{ uri: `http://image.tmdb.org/t/p/w185/${info.poster_path}` }} style={{ borderBottomLeftRadius: 5, borderBottomRightRadius: 5, height: height/3, width: width }} />}
+                    
                 </View>
 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-around' }} >
@@ -77,15 +74,16 @@ const MovieDetailPage = () => {
 
                 </View>
                 {/* 4 */}
-                <View style={{ margin: 5, height: 120, width: '100%' }}>
+                <View style={{ margin: 5, height: height/7, width: width,}}>
+                {/* <View style={{ margin: 5, height: 120, width: '100%' }}> */}
                     <Text style={{color:Colors.WHITE}}>{info.overview}</Text>
                 </View>
                 {/* 5 */}
-                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly' }}>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-evenly',backgroundColor:'grey' }}>
                     {/* 5.1 */}
                     <View >
                         <IconButton icon={'check'} iconColor={Colors.WHITE}/>
-                        <Text style={{ alignSelf: 'center', bottom: 5,color:Colors.WHITE }}>My List</Text>
+                        <Text style={{ alignSelf: 'center',  bottom: 5,color:Colors.WHITE }}>My List</Text>
                     </View>
                     {/* 5.2 */}
                     <View>

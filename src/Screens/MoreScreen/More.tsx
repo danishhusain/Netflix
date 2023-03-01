@@ -1,4 +1,4 @@
-import { Alert, Image, StyleSheet, Text, TouchableOpacity, View, } from 'react-native'
+import { Alert, Image, StyleSheet, Text, TouchableOpacity, View, ToastAndroid } from 'react-native'
 import React, { useState } from 'react'
 import { Colors } from '../../CustomComponents/CustomColor'
 import { Button, Card, IconButton } from 'react-native-paper'
@@ -11,7 +11,13 @@ const More = () => {
   const Copyied = () => {
     const textToCopy = 'https://www.netflix.com/in/'
     Clipboard.setString(textToCopy);
-    Alert.alert("Copied Tex")
+    ToastAndroid.showWithGravityAndOffset(
+      'Copied',
+      ToastAndroid.LONG,
+      ToastAndroid.BOTTOM,
+      30,
+      30,
+    );
   }
 
   return (
@@ -56,7 +62,7 @@ const More = () => {
       </View>
       <View>
         <Text style={{ fontSize: 20, fontWeight: '600', color: Colors.WHITE, left: 5 }}>Tell friends about Netflix.</Text>
-        <Card style={{ marginTop: 20,marginHorizontal:5}}>
+        <Card style={{ marginTop: 20, marginHorizontal: 5 }}>
           <Card.Content>
             <Text>Share this link so your friend can join the conversation around all your favrioute Tv shows and movies.</Text>
           </Card.Content>
@@ -93,7 +99,7 @@ const More = () => {
 
       </View>
       {/* 5 */}
-      <View style={{ top:20 }}>
+      <View style={{ top: 20 }}>
 
         <TouchableOpacity style={{ margin: 5, backgroundColor: Colors.GRAY, }}>
           <Text style={{ color: Colors.WHITE, padding: 10 }}>App Setting</Text>
