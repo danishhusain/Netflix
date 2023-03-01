@@ -16,18 +16,23 @@ import Play from '../Screens/PlayScreen/Play';
 import Loader from '../Loader/Loader';
 import MyList from '../Screens/HomeScreen/MyList';
 import LogIn from '../LogInSignIn/LogIn';
+import SignUp from '../LogInSignIn/SignUp';
+import CreateUserWithEmailAndPassword from '../LogInSignIn/Auth/Firebase/CreateUserWithEmailAndPassword';
 
 
 
 const Navigator = () => {
     const Stack = createNativeStackNavigator();
+    
 
     return (
         <Stack.Navigator screenOptions={{ headerShown: false }}>
 
+            <Stack.Screen name='LogIn' component={LogIn} />
+            <Stack.Screen name='CreateUserWithEmailAndPassword' component={CreateUserWithEmailAndPassword} />
+            <Stack.Screen name='SignUp' component={SignUp} />
             {/* <Stack.Screen name='TabNavigator' component={TabNavigator} options={{ headerShown: true }} /> */}
             {/* <Stack.Screen name='TabNavigator' component={TabNavigator} /> */}
-            <Stack.Screen name='LogIn' component={LogIn} />
             {/* <Stack.Screen name='HomeScreen' component={Home} />
 
             <Stack.Screen name='SearchScreen' component={Search} />
