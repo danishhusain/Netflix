@@ -2,8 +2,10 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import CustomSighnUp from './CustomLogInSignUp/CustomSighnUp'
 import { IconButton } from 'react-native-paper'
+import { useNavigation } from '@react-navigation/native'
 
 const SignUp = () => {
+
   return (
     <View style={{ flex:1,bottom:'10%',top:'10%' }}>
       {/* 1 */}

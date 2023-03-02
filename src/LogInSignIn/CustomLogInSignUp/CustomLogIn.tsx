@@ -101,17 +101,30 @@
 // export default CustomSighnUp;
 
 
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { View, Button } from 'react-native';
+import { View, Button, TouchableOpacity } from 'react-native';
 import { Text, TextInput, } from 'react-native-paper';
+import { FirebaseContext } from '../Auth/Firebase/FirebaseContext';
+import { useNavigation } from '@react-navigation/native';
+import SignUp from '../SignUp';
+import CreateUserWithEmailAndPassword from '../Auth/Firebase/CreateUserWithEmailAndPassword';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const CustomLogIn = () => {
+    const { user, setUser, login, googleLogin } = useContext(FirebaseContext)
+    const navigation = useNavigation()
+
+   
+
+    // console.log(">>>>>>>>>>",user)
+
     return (
         <Formik
-            initialValues={{ name: '', email: '', phone: '', password: '', confirmPassword: '' }}
-            onSubmit={(values) => console.log(values)}
+            // initialValues={{ name: '', email: '', phone: '', password: '', confirmPassword: '' }}
+            initialValues={{ email: '', password: '', }}
+            onSubmit={(values) => { login(values) }}
             validationSchema={Yup.object().shape({
                 // name: Yup.string()
                 //     .min(2, 'Name must be at least 2 characters')
@@ -120,9 +133,9 @@ const CustomLogIn = () => {
                     .email('Invalid email')
                     .matches(/[@gmail.com]/, 'enter @ ')
                     .required('Email is required'),
-                phone: Yup.string()
-                    .matches(/^[0-9]{10}$/, 'Phone number is invalid')
-                    .required('Phone number is required'),
+                // phone: Yup.string()
+                //     .matches(/^[0-9]{10}$/, 'Phone number is invalid')
+                //     .required('Phone number is required'),
                 password: Yup.string()
                     .min(8, 'Password must be at least 8 characters')
                     .matches(/[a-zA-Z]/, 'Password must contain at least one letter')
@@ -173,7 +186,7 @@ const CustomLogIn = () => {
                         placeholder="Password"
                         mode='outlined'
                         secureTextEntry={true}
-                    /> 
+                    />
                     {errors.password && touched.password && <Text style={{ color: 'red' }}>{errors.password}</Text>}
                     {/* <TextInput
                         onChangeText={handleChange('confirmPassword')}
@@ -184,11 +197,24 @@ const CustomLogIn = () => {
                         mode='outlined'
                     />
                     {errors.confirmPassword && touched.confirmPassword && <Text style={{ color: 'red' }}>{errors.confirmPassword}</Text>} */}
+                    <View style={{ marginVertical: '2%',flexDirection:'row',justifyContent:'space-around' }}>
+                        <TouchableOpacity>
+                            <Text >Remember</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Text >Forget?</Text>
+                        </TouchableOpacity>
+                    
+                    </View>
                     <View style={{ marginVertical: '2%', }}>
                         <Button onPress={handleSubmit} title="Log In" color={'red'} />
                     </View>
                     <View style={{ marginVertical: '2%', borderColor: 'red' }}>
-                        {/* <Button onPress={handleSubmit} title="Sign Up" color={'black'} /> */}
+                        <Button onPress={() => navigation.navigate(CreateUserWithEmailAndPassword)} title="Sign Up" color={'black'} />
+                    </View>
+                    
+                    <View style={{ marginVertical: '2%', borderColor: 'red' }}>
+                        <Button onPress={() => googleLogin()} title="Google LogIn" color={'black'} />
                     </View>
                 </View>
             )}

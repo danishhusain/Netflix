@@ -1,114 +1,14 @@
-// import React from 'react';
-// import { View } from 'react-native';
-// import { Formik } from 'formik';
-// import * as Yup from 'yup';
-// import styled from 'styled-components/native';
-// import { TextInput } from 'react-native-paper';
-
-// // Define some styled components for your form elements
-// const Container = styled.View`
-
-//   padding: 20px;
-//   justify-content: center;
-// `;
-
-// const Label = styled.Text`
-//   font-size: 18px;
-//   margin-bottom: 5px;
-// `;
-
-// const Input = styled.TextInput`
-//   border: 1px solid #ccc;
-//   padding: 10px;
-//   border-radius: 5px;
-// `;
-
-// const ErrorText = styled.Text`
-//   color: red;
-// `;
-
-// const Button = styled.TouchableOpacity`
-//   background-color: blue;
-//   padding: 15px;
-//   border-radius: 10px;
-//   margin-top: 10px;
-
-// `;
-
-// const ButtonText = styled.Text`
-//   color: white;
-// `;
-
-// // Define a validation schema for your form fields
-// const validationSchema = Yup.object().shape({
-//     // same as before
-// });
-
-// function CustomSighnUp() {
-//     return (
-//         <Container>
-//             {/* Use Formik component to handle form state and submission */}
-//             <Formik
-//                 initialValues={{  email: '',number: '', password: '' }}
-//                 validationSchema={validationSchema}
-//                 onSubmit={(values) => {
-//                     // Do something with the values
-//                     console.log(values);
-//                 }}
-//             >
-//                 {/* Use Formik props to access form values, errors and handlers */}
-//                 {({ handleChange, handleBlur, handleSubmit,  values, errors }) => (
-//                     <View>
-
-//                         <Label>Email</Label>
-//                         <TextInput mode='outlined'
-//                             placeholder="Email"
-//                             onChangeText={handleChange('email')}
-//                             onBlur={handleBlur('email')}
-//                             value={values.email}
-//                         />
-//                         {errors.email && <ErrorText>{errors.email}</ErrorText>}
-//                         <Label>Number</Label>
-//                         <TextInput mode='outlined'
-//                             placeholder="Number"
-//                             onChangeText={handleChange('number')}
-//                             onBlur={handleBlur('number')}
-//                             value={values.number}
-//                             keyboardType={'numeric'}
-//                         />
-//                         {/* Show error message if any */}
-//                         {errors.number && <ErrorText>{errors.number}</ErrorText>}
-//                         <Label>Password</Label>
-//                         <TextInput mode='outlined'
-//                             placeholder="Password"
-//                             onChangeText={handleChange('password')}
-//                             onBlur={handleBlur('password')}
-//                             value={values.password}
-//                             secureTextEntry // Hide password input
-//                         />
-//                         {errors.password && <ErrorText>{errors.password}</ErrorText>}
-//                         {/* Use handleSubmit function to submit the form */}
-//                         <Button onPress={handleSubmit} >
-//                             <ButtonText >Submit</ButtonText>
-//                         </Button>
-//                     </View>
-//                 )}
-//             </Formik>
-//         </Container>
-//     );
-// }
-
-// export default CustomSighnUp;
-
-
 import React, { useContext } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { View, Button } from 'react-native';
 import { Text, TextInput, } from 'react-native-paper';
 import { FirebaseContext } from '../Auth/Firebase/FirebaseContext';
+import { useNavigation } from '@react-navigation/native';
+import LogIn from '../LogIn';
 
 const CustomSighnUp = () => {
+  const navigation=useNavigation()
     const { user, setUser } = useContext(FirebaseContext)
 
 
@@ -189,10 +89,10 @@ const CustomSighnUp = () => {
                     />
                     {errors.confirmPassword && touched.confirmPassword && <Text style={{ color: 'red' }}>{errors.confirmPassword}</Text>}
                     <View style={{ marginVertical: '2%', }}>
-                        <Button onPress={handleSubmit} title="Sign In" color={'red'} />
+                        <Button onPress={handleSubmit} title="Sign UP" color={'red'} />
                     </View>
                     <View style={{ marginVertical: '2%', borderColor: 'red' }}>
-                        <Button onPress={handleSubmit} title="Sign Up" color={'black'} />
+                        <Button onPress={()=>navigation.navigate(LogIn)} title="Log IN" color={'black'} />
                     </View>
                 </View>
             )}

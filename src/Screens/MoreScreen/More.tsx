@@ -3,6 +3,9 @@ import React, { useState } from 'react'
 import { Colors } from '../../CustomComponents/CustomColor'
 import { Button, Card, IconButton } from 'react-native-paper'
 import Clipboard from '@react-native-clipboard/clipboard';
+import auth, { firebase } from '@react-native-firebase/auth';
+import { current } from '@reduxjs/toolkit';
+
 
 
 const More = () => {
@@ -18,6 +21,26 @@ const More = () => {
       30,
       30,
     );
+  }
+
+  const LogOut = () => {
+    auth()
+      .signOut()
+      .then(() => console.log('User signed out!'));
+
+  }
+  const currentUser =async()=>{
+    const unsubscribe= firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        console.log('User email: ', user.email);
+      }
+    });
+    // console.log(unsubscribe)
+
+  
+
+    
+
   }
 
   return (
@@ -114,7 +137,10 @@ const More = () => {
         </TouchableOpacity>
 
 
-        <TouchableOpacity style={{ margin: 5, backgroundColor: Colors.GRAY, }}>
+        <TouchableOpacity style={{ margin: 5, backgroundColor: Colors.GRAY, }} onPress={() => { LogOut() }}>
+          <Text style={{ color: Colors.WHITE, padding: 10 }}>Sign Out</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={{ margin: 5, backgroundColor: Colors.GRAY, }} onPress={() => { currentUser() }}>
           <Text style={{ color: Colors.WHITE, padding: 10 }}>Sign Out</Text>
         </TouchableOpacity>
 

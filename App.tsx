@@ -16,12 +16,10 @@ const App = () => {
     <MoviesContextProvider>
       {/* <Provider store={store}> */}
       <PaperProvider>
-        <NavigationContainer>
           <FirebaseProvider>
             {/* <TabNavigator /> */}
             <Navigator />
           </FirebaseProvider>
-        </NavigationContainer>
       </PaperProvider>
       {/* </Provider> */}
     </MoviesContextProvider>
