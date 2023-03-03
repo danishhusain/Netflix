@@ -210,7 +210,7 @@ const CustomLogIn = () => {
                         <Button onPress={handleSubmit} title="Log In" color={'red'} />
                     </View>
                     <View style={{ marginVertical: '2%', borderColor: 'red' }}>
-                        <Button onPress={() => navigation.navigate(CreateUserWithEmailAndPassword)} title="Sign Up" color={'black'} />
+                        <Button onPress={() => navigation.navigate(SignUp)} title="Sign Up" color={'black'} />
                     </View>
                     
                     <View style={{ marginVertical: '2%', borderColor: 'red' }}>

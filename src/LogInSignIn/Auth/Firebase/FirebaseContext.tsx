@@ -8,61 +8,76 @@ import { GoogleSignin, GoogleSigninButton, statusCodes, } from '@react-native-go
 
 export const FirebaseContext = createContext()
 export default function FirebaseProvider({ children }) {
-    const [user, setUser] = useState()
-    const [signUpData, setSignUpData] = useState()
-    ////UseEfffect for google signIn
-    useEffect(() => {
-        GoogleSignin.configure({
-            // webClientId:'350073134414-s2n4voc1eof6fke7e4q126jv1a72a75q.apps.googleusercontent.com',
-            webClientId:'350073134414-nke5nkmk1n0r8fu8b3c62v60hqg9uoph.apps.googleusercontent.com',
-            offlineAccess: true,
-        });
+  const [user, setUser] = useState()
+  const [signUpData, setSignUpData] = useState()
+  ////UseEfffect for google signIn
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: '1005803108156-jb0ss9b5muksm1jcfi9b84akkvkuet35.apps.googleusercontent.com',
     });
-    const googleLogin = async () => {
+  });
+  const googleLogin = async () => {
+    await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
+    // Get the users ID token
+    const { idToken } = await GoogleSignin.signIn();
+    console.log('Id Token 1', idToken);
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    console.log('Succesfuuly Create a Google credential with the token  token:', googleCredential);
+    // Sign-in the user with the credential
+    return auth().signInWithCredential(googleCredential);
+  }
+
+
+
+  //   console.log('FirebaseProvider',user)
+  return (
+    <FirebaseContext.Provider value={{
+      user, setUser,
+      signUpData, setSignUpData,
+
+      //register
+      login: async (values) => {
         try {
-            await GoogleSignin.hasPlayServices();
-            const userInfo = await GoogleSignin.signIn();
-            console.log(userInfo);
-            // setUser(userInfo);
-          } catch (error) {
-            if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-              // user cancelled the sign-in flow
-              console.log('Sign-in cancelled');
-            } else if (error.code === statusCodes.IN_PROGRESS) {
-              // operation (e.g. sign-in) is in progress already
-              console.log('Sign-in already in progress');
-            } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-              // play services not available or outdated
-              console.log('Google Play services not available');
-            } else {
-              console.log('Error occurred:', error);
-            }
-          }
-    }
-
-
-
-    //   console.log('FirebaseProvider',user)
-    return (
-        <FirebaseContext.Provider value={{
-            user, setUser,
-            signUpData, setSignUpData,
-            login: async (values) => {
-                try {
-                    await auth().signInWithEmailAndPassword(values.email, values.password);
-                    console.log('login  sucessfully ');
-                } catch (e) {
-                    console.log('Please make account', e);
+          await auth().signInWithEmailAndPassword(values.email, values.password);
+          console.log('login  sucessfully ');
+        } catch (e) {
+          console.log('Please make account', e);
+        }
+      },
+      // Google Account Login
+      googleLogin,
+      //createGoogleAccount
+      createUserWithEmailAndPasswordFirebase: async (user) => {
+        try {
+          await
+            auth()
+              .createUserWithEmailAndPassword(user.email, user.password)
+              .then(() => {
+                console.log('User account created & signed in!');
+              })
+              .catch(error => {
+                if (error.code === 'auth/email-already-in-use') {
+                  console.log('That email address is already in use!');
                 }
-            },
-            googleLogin
-            // Google Account Login
+
+                if (error.code === 'auth/invalid-email') {
+                  console.log('That email address is invalid!');
+                }
+                console.error(error);
+              });
+        } catch (error) {
+          console.log('Problem in account!', error);
+
+        }
+
+      }
 
 
 
-        }}>
-            {children}
-        </FirebaseContext.Provider>
-    )
+    }}>
+      {children}
+    </FirebaseContext.Provider>
+  )
 }
 

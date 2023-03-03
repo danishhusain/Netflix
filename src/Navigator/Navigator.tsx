@@ -96,13 +96,14 @@ const Navigator = () => {
 
     // Set an initializing state whilst Firebase connects
     const [initializing, setInitializing] = useState(true);
-    const [isUser, setIsUser] = useState();
+    // const [isUser, setIsUser] = useState();
+    const {user, setUser}= useContext(FirebaseContext);
 
     // const { user, setUser } = useContext(FirebaseContext)
 
     // Handle user state changes
-    function onAuthStateChanged(isUser) {
-        setIsUser(isUser);
+    function onAuthStateChanged(user) {
+        setUser(user);
         if (initializing) setInitializing(false);
     }
 
@@ -116,7 +117,7 @@ const Navigator = () => {
 
     return (
         <NavigationContainer>
-            {isUser ? <AppStack /> : <AuthStack />}
+            {user ? <AppStack /> : <AuthStack />}
         </NavigationContainer>
 
     )

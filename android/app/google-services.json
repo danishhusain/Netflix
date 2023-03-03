@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "350073134414",
-    "project_id": "netflix-bba59",
-    "storage_bucket": "netflix-bba59.appspot.com"
+    "project_number": "1005803108156",
+    "project_id": "netflix-daf23",
+    "storage_bucket": "netflix-daf23.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:350073134414:android:2aa24a455b0eb444e0521f",
+        "mobilesdk_app_id": "1:1005803108156:android:9a001ccf9b9683eefb1039",
         "android_client_info": {
           "package_name": "com.netflix"
         }
       },
       "oauth_client": [
         {
-          "client_id": "350073134414-s2n4voc1eof6fke7e4q126jv1a72a75q.apps.googleusercontent.com",
+          "client_id": "1005803108156-kvtc1csqia4p3tl8mlv8e0s8kb227805.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.netflix",
+            "certificate_hash": "8298a2c92d25b120be48c63565de8cf1a96086c8"
+          }
+        },
+        {
+          "client_id": "1005803108156-jb0ss9b5muksm1jcfi9b84akkvkuet35.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAguS0bgIGA8aPBAjAB3xqv5coguA_4dVo"
+          "current_key": "AIzaSyBDGOaSqTfbg1pneyIiohsphe1WPT41ocw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "350073134414-nke5nkmk1n0r8fu8b3c62v60hqg9uoph.apps.googleusercontent.com",
+              "client_id": "1005803108156-jb0ss9b5muksm1jcfi9b84akkvkuet35.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

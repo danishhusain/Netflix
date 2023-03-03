@@ -8,14 +8,14 @@ import { useNavigation } from '@react-navigation/native';
 import LogIn from '../LogIn';
 
 const CustomSighnUp = () => {
-  const navigation=useNavigation()
-    const { user, setUser } = useContext(FirebaseContext)
+    const navigation = useNavigation()
+    const { user, setUser, createUserWithEmailAndPasswordFirebase } = useContext(FirebaseContext)
 
 
     return (
         <Formik
             initialValues={{ name: '', email: '', phone: '', password: '', confirmPassword: '' }}
-            onSubmit={(values) => {  setUser(values) }}
+            onSubmit={(values) => { createUserWithEmailAndPasswordFirebase(values) }}
             validationSchema={Yup.object().shape({
                 // name: Yup.string()
                 //     .min(2, 'Name must be at least 2 characters')
@@ -92,7 +92,7 @@ const CustomSighnUp = () => {
                         <Button onPress={handleSubmit} title="Sign UP" color={'red'} />
                     </View>
                     <View style={{ marginVertical: '2%', borderColor: 'red' }}>
-                        <Button onPress={()=>navigation.navigate(LogIn)} title="Log IN" color={'black'} />
+                        <Button onPress={() => navigation.goBack()} title="Log IN" color={'black'} />
                     </View>
                 </View>
             )}

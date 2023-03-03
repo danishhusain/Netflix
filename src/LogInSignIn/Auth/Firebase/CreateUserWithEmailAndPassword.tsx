@@ -5,40 +5,44 @@ import { FirebaseContext } from './FirebaseContext'
 import { useNavigation } from '@react-navigation/native'
 import SignUp from '../../SignUp'
 import auth, { firebase } from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin'
 
 
 const CreateUserWithEmailAndPassword = () => {
   const navigation = useNavigation()
   const { user, setUser, } = useContext(FirebaseContext)
 
-  useEffect(() => {
+  
 
-    { user && createUserWithEmailAndPasswordFirebase(user) }
-  })
+  // useEffect(() => {
 
-  const createUserWithEmailAndPasswordFirebase = async (user) => {
-      try {
-        auth()
-          .createUserWithEmailAndPassword(`${user.email}`, `${user.password}`)
-          .then(() => {
-            console.log('User account created & signed in!');
-          })
-          .catch(error => {
-            if (error.code === 'auth/email-already-in-use') {
-              console.log('That email address is already in use!');
-            }
+  //   { user && createUserWithEmailAndPasswordFirebase(user) }
+  // })
 
-            if (error.code === 'auth/invalid-email') {
-              console.log('That email address is invalid!');
-            }
-            console.error(error);
-          });
-      } catch (error) {
-        console.log('Problem in account!', error);
+  // const createUserWithEmailAndPasswordFirebase = async (user) => {
+  //     try {
+  //       await
+  //       auth()
+  //         .createUserWithEmailAndPassword(user.email, user.password)
+  //         .then(() => {
+  //           console.log('User account created & signed in!');
+  //         })
+  //         .catch(error => {
+  //           if (error.code === 'auth/email-already-in-use') {
+  //             console.log('That email address is already in use!');
+  //           }
 
-      }
+  //           if (error.code === 'auth/invalid-email') {
+  //             console.log('That email address is invalid!');
+  //           }
+  //           console.error(error);
+  //         });
+  //     } catch (error) {
+  //       console.log('Problem in account!', error);
 
-    }
+  //     }
+
+  //   }
 
   
 

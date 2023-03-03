@@ -1,15 +1,19 @@
 import { Alert, Image, StyleSheet, Text, TouchableOpacity, View, ToastAndroid } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Colors } from '../../CustomComponents/CustomColor'
 import { Button, Card, IconButton } from 'react-native-paper'
 import Clipboard from '@react-native-clipboard/clipboard';
 import auth, { firebase } from '@react-native-firebase/auth';
 import { current } from '@reduxjs/toolkit';
+import { FirebaseContext } from '../../LogInSignIn/Auth/Firebase/FirebaseContext';
+import { GoogleSignin, } from '@react-native-google-signin/google-signin';
 
 
 
 const More = () => {
   const [copiedText, setCopiedText] = useState('');
+  const { user, setUser } = useContext(FirebaseContext);
+
   // clipBoard
   const Copyied = () => {
     const textToCopy = 'https://www.netflix.com/in/'
@@ -23,25 +27,26 @@ const More = () => {
     );
   }
 
-  const LogOut = () => {
-    auth()
-      .signOut()
+  const signOut = async () => {
+    auth().signOut()
       .then(() => console.log('User signed out!'));
-
-  }
-  const currentUser =async()=>{
-    const unsubscribe= firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        console.log('User email: ', user.email);
+    auth().onAuthStateChanged(user => {
+      if (!user) {
+        console.log("Redirecting to login page")
       }
     });
-    // console.log(unsubscribe)
+  };
 
-  
-
-    
-
+  const isSignedIn = async () => {
+    const userInfo = await GoogleSignin.isSignedIn();
+    console.log(userInfo)
   }
+
+
+
+
+
+
 
   return (
     <View style={{ flex: 1, backgroundColor: Colors.BG }}>
@@ -137,11 +142,11 @@ const More = () => {
         </TouchableOpacity>
 
 
-        <TouchableOpacity style={{ margin: 5, backgroundColor: Colors.GRAY, }} onPress={() => { LogOut() }}>
+        <TouchableOpacity style={{ margin: 5, backgroundColor: Colors.GRAY, }} onPress={() => { signOut() }}>
           <Text style={{ color: Colors.WHITE, padding: 10 }}>Sign Out</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{ margin: 5, backgroundColor: Colors.GRAY, }} onPress={() => { currentUser() }}>
-          <Text style={{ color: Colors.WHITE, padding: 10 }}>Sign Out</Text>
+        <TouchableOpacity style={{ margin: 5, backgroundColor: Colors.GRAY, }} onPress={() => { isSignedIn() }}>
+          <Text style={{ color: Colors.WHITE, padding: 10 }}>getCurrentUser</Text>
         </TouchableOpacity>
 
       </View>
